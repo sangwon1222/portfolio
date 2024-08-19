@@ -1,4 +1,5 @@
 import HashTag from "@/components/atoms/hashtag";
+import Grid1Ratio2 from "@/components/template/tGrid1Ratio2";
 import ProjectCard from "@/components/template/tProjectCard";
 import { Metadata, ResolvingMetadata } from "next";
 import "swiper/css";
@@ -54,57 +55,29 @@ export default async function Home({ params, searchParams }: { params: any; sear
         <h3 className="px-10 m-auto w-fit text-center relative after:contents-[''] after:block after:absolute after:w-full after:h-10 after:bg-red-400 after:z-[1] after:left-0 after:bottom-0 after:animate-pulse animate-pulse">
           <span className="relative z-[2]">EXPERIENCE</span>
         </h3>
-        <ul className="flex flex-col gap-20 p-10 desktop:p-40 tablet:p-30 min-w-420 max-w-700 w-full">
-          <li className="flex flex-col desktop:grid desktop:grid-cols-2 tablet:grid tablet:grid-cols-2 gap-10 border p-10 w-full">
-            <ol>
-              <li className="flex desktop:flex-col tablet:flex-col items-center gap-10">
-                <a href="http://www.sonid.co.kr/" target="_blank" className="text-lg font-bold py-10">
-                  소니드
-                </a>
-                <span className="text-gray-400">2023.03 ~ 2024.07</span>
-              </li>
-            </ol>
-            <ol className="px-10 flex flex-col gap-10">
-              <ProjectCard label="sonid 자체웹 개발" hashtagList={["next.js", "react", "pwa"]} />
-              <ProjectCard label="효성 라벨 프린트 프로그램 유지보수" hashtagList={["c#"]} />
-              <ProjectCard label="LF RFID 프린트 프로그램 유지보수" hashtagList={["c#"]} />
-              <ProjectCard label="Think-Tag RFID 프린트 개발" hashtagList={["vue3"]} />
-              <ProjectCard label="RFID 태그 자사 검수기" hashtagList={["vue3", "electron.js"]} />
-            </ol>
-          </li>
-          <li className="flex flex-col desktop:grid desktop:grid-cols-2 tablet:grid tablet:grid-cols-2 gap-10 border p-10 w-full">
-            <ol>
-              <li className="flex desktop:flex-col tablet:flex-col items-center gap-10">
-                <a href="https://home.yesbee.com/" target="_blank" className="text-lg font-bold py-10">
-                  아이오앤코
-                </a>
-                <span className="text-gray-400">2021.11 ~ 2023.02</span>
-              </li>
-            </ol>
-            <ol className="desktop:px-10 tablet:px-10 flex flex-col gap-10">
-              <ProjectCard label="yesbee 사이트 유지보수" hashtagList={["next.js", "react"]} />
-              <ProjectCard label="hive-center wms 개발" hashtagList={["vue3"]} />
-              <ProjectCard label="PDA 웹앱 개발" hashtagList={["vue3"]} />
-            </ol>
-          </li>
-          <li className="flex flex-col desktop:grid desktop:grid-cols-2 tablet:grid tablet:grid-cols-2 gap-10 border p-10 w-full">
-            <ol>
-              <li className="flex desktop:flex-col tablet:flex-col items-center gap-10">
-                <a href="https://www.minigate.net/" target="_blank" className="text-lg font-bold py-10">
-                  미니게이트
-                </a>
-                <span className="text-gray-400">2020.05 ~ 2021.08</span>
-              </li>
-            </ol>
-            <ol className="desktop:px-10 tablet:px-10 flex flex-col gap-10">
-              <ProjectCard label="아람북클럽 베이비올 게임 개발" hashtagList={["vue2", "pixi.js"]} />
-              <ProjectCard label="아람북클럽 하루한글 게임 개발" hashtagList={["vue2", "pixi.js"]} />
-              <ProjectCard label="아이스크림 에듀 HTML5 기반 게임 개발" hashtagList={["vue2", "pixi.js"]} />
-              <ProjectCard label="천재교육 타자 HTML5 기반 게임 개발" hashtagList={["vue2", "pixi.js"]} />
-              <ProjectCard label="자사 MEW HTML5 기반 게임 개발" hashtagList={["vue2", "pixi.js"]} />
-            </ol>
-          </li>
-        </ul>
+        <div className="flex flex-col gap-20 p-10 desktop:p-40 tablet:p-30 min-w-420 max-w-700 w-full">
+          <Grid1Ratio2 label="소니드" period="2023.03 ~ 2024.07" href="http://www.sonid.co.kr/">
+            <ProjectCard label="sonid 자체웹 개발" hashtagList={["next.js", "react", "pwa"]} />
+            <ProjectCard label="효성 라벨 프린트 프로그램 유지보수" hashtagList={["c#"]} />
+            <ProjectCard label="LF RFID 프린트 프로그램 유지보수" hashtagList={["c#"]} />
+            <ProjectCard label="Think-Tag RFID 프린트 개발" hashtagList={["vue3"]} />
+            <ProjectCard label="RFID 태그 자사 검수기" hashtagList={["vue3", "electron.js"]} />
+          </Grid1Ratio2>
+
+          <Grid1Ratio2 label="아이오앤코" period="2021.11 ~ 2023.02" href="https://home.yesbee.com/">
+            <ProjectCard label="yesbee 사이트 유지보수" hashtagList={["next.js", "react"]} />
+            <ProjectCard label="hive-center wms 개발" hashtagList={["vue3"]} />
+            <ProjectCard label="PDA 웹앱 개발" hashtagList={["vue3"]} />
+          </Grid1Ratio2>
+
+          <Grid1Ratio2 label="미니게이트" period="2020.05 ~ 2021.08" href="https://www.minigate.net/">
+            <ProjectCard label="아람북클럽 베이비올 게임 개발" hashtagList={["vue2", "pixi.js"]} />
+            <ProjectCard label="아람북클럽 하루한글 게임 개발" hashtagList={["vue2", "pixi.js"]} />
+            <ProjectCard label="아이스크림 에듀 HTML5 기반 게임 개발" hashtagList={["vue2", "pixi.js"]} />
+            <ProjectCard label="천재교육 타자 HTML5 기반 게임 개발" hashtagList={["vue2", "pixi.js"]} />
+            <ProjectCard label="자사 MEW HTML5 기반 게임 개발" hashtagList={["vue2", "pixi.js"]} />
+          </Grid1Ratio2>
+        </div>
       </div>
     </div>
   );

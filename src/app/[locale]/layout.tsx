@@ -1,4 +1,3 @@
-import GoTopBtn from "@/components/goTopBtn";
 import Loading from "@/components/loading";
 import InstallPrompt from "@/components/pwa/InstallPrompt";
 import RecoilRootProvider from "@/components/recoilRootProvider";
@@ -11,7 +10,6 @@ import { Toaster } from "react-hot-toast";
 import "../globals.css";
 import { Provider } from "./provider";
 import Navigation from "@/components/template/navigation";
-import { darkModeState } from "@/recoil/state";
 import DarkModeProvider from "./themeProvider";
 const notoSansKr = Noto_Sans_KR({
   subsets: ["latin"],
