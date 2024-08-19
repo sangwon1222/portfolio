@@ -55,7 +55,7 @@ export default async function Home({ params, searchParams }: { params: any; sear
         <h3 className="px-10 m-auto w-fit text-center relative after:contents-[''] after:block after:absolute after:w-full after:h-10 after:bg-red-400 after:z-[1] after:left-0 after:bottom-0 after:animate-pulse animate-pulse">
           <span className="relative z-[2]">EXPERIENCE</span>
         </h3>
-        <div className="flex flex-col gap-20 p-10 desktop:p-40 tablet:p-30 min-w-420 max-w-700 w-full">
+        <div className="flex flex-col gap-20 min-w-420 max-w-700 w-full">
           <Grid1Ratio2 label="소니드" period="2023.03 ~ 2024.07" href="http://www.sonid.co.kr/">
             <ProjectCard label="sonid 자체웹 개발" hashtagList={["next.js", "react", "pwa"]} />
             <ProjectCard label="효성 라벨 프린트 프로그램 유지보수" hashtagList={["c#"]} />
