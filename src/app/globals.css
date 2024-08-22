@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  color-scheme: light;
+  --color-bg-primary:#fff;
+  --color-text-secondary: #bcbcbc;
+
+  --bg-main: #ffffff;
+  --bg-sub: #bdc1c9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-main: #383838;
+  --bg-sub: #5a5a5a;
+  --color-bg-primary:#383838;
+  --color-text-secondary:#fff;
+}
+
+.center-layout{
+  @apply flex justify-center items-center
+}
+img {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+html,body {
+  font-family: var(--custom-font);
+  @apply text-[12px] tablet:text-[14px] desktop:text-[16px] min-w-[320px] tracking-tighter
+}
+
+b {
+  @apply font-black;
+}
+
+h1{
+  @apply text-36 font-bold
+}
+h2{
+  @apply text-30 font-bold
+}
+h3{
+  @apply text-24 font-bold
+}
+h4{
+  @apply text-20 font-bold
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-600;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply bg-gray-600 dark:bg-gray-100 rounded-full;
+}
+
+
+.swiper-button-next,.swiper-button-prev{
+  @apply overflow-hidden !w-20 !h-20 rounded-full relative  hover:after:w-10 hover:after:h-10;
+}
+.swiper-button-next:after{
+  @apply rotate-45 border-t-[6px] border-r-[6px]
+}
+.swiper-button-prev:after{
+  @apply -rotate-45 border-t-[6px] border-l-[6px]
+}
+.swiper-button-next:after,.swiper-button-prev:after
+{
+  @apply absolute border-white w-8 h-8 rounded !content-[''] duration-150;
+}
+
+.swiper-pagination-mainBanner-bullet{
+  @apply inline-block w-6 h-2 mx-1 bg-white duration-300 shadow-md shadow-gray-400;
+}
+.swiper-pagination-mainBanner-bullet-active{
+  @apply bg-sub-1 w-2;
+}
+
+input,textarea:focus{
+  outline: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* 파이어폭스에서의 초기화 방법 */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type='checkbox'] {
+  @apply bg-white border-main-2 border;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 13px;
+  outline: 0;
+  width: 13px;
+  border-radius: 0px;
+  position: relative;
+}
+input[type='checkbox']::before {
+  content: '';
+  opacity: 0.3;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+input[type='checkbox']::after {
+  @apply border-main-2;
+  border-width: 0 2px 2px 0;
+  content: '';
+  display: none;
+  height: 40%;
+  left: 40%;
+  position: relative;
+  top: 20%;
+  transform: rotate(45deg);
+  width: 15%;
+}
+input[type='checkbox']:checked {
+  @apply bg-main-2;
+  border: none;
+}
+input[type='checkbox']:checked::after {
+  display: block;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
