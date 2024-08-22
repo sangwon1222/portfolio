@@ -1,5 +1,4 @@
 "use client";
-import { darkModeState } from "@/recoil/state";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -45,12 +44,10 @@ export default function InstallPrompt() {
   return (
     <div
       ref={refPwa}
-      className={
-        `
+      className={`
           fixed -top-[400px] right-0 rounded shadow-xl overflow-hidden flex flex-col gap-10 w-[320px] p-10 duration-300 z-30 text-sm font-bold desktop:right-2 tablet:right-2 select-none
-          ${darkModeState?'bg-gray-800 text-white border-white border':'bg-white text-gray-800 border-gray-800 border'}
-        `
-      }
+          dark:border-white border-gray-800 border
+        `}
     >
       <p>Install App?</p>
       <div className="flex gap-10 w-full">

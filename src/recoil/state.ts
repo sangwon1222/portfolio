@@ -35,18 +35,8 @@ export const fcmTokenSelector = selector<string>({
 });
 // FCM____________________________________________
 
-// Dark-Mode____________________________________________
-export const darkModeState = atom({
-  key: "dark-mode-state",
-  default: true,
-});
-export const darkModeSelector = selector<boolean>({
-  key: "dark-mode-selector",
-  get: ({ get }) => {
-    const darkmode = get(darkModeState);
-    return darkmode;
-  },
-  set: ({ set }, newValue) => {
-    set(darkModeState, newValue);
-  },
+// project-popup____________________________________________
+export const projectPopup = atom({
+  key: "project-popup-state",
+  default: '',
 });

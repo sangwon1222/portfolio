@@ -30,44 +30,32 @@ export default function Navigation() {
     <div
       className={`sticky top-0 z-20 min-w-[320px] w-full dark:text-white text-gray-800 border-b backdrop-blur-3xl ${mobileNavList ? "h-screen" : "h-80 overflow-hidden"} duration-200`}
     >
-      <div className="flex flex-col justify-start w-full max-w-[1280px] m-auto">
+      <div className="flex flex-col justify-start w-full max-w-[1280px] m-auto font-bold">
         <div className="flex justify-between items-center w-full">
           <ListBtn isOpen={mobileNavList} openEvent={openNavList} />
 
           <Link href="/">
-            {currentTheme === "dark" ? (
-              <Image
-                src="/assets/logo-white.png"
-                alt="logo"
-                width={100}
-                height={50}
-                placeholder="blur"
-                blurDataURL="/assets/logo-white.png"
-                style={{ width: 100, height: 50 }}
-              />
-            ) : (
-              <Image
-                src="/assets/logo-color.png"
-                alt="logo"
-                width={100}
-                height={50}
-                placeholder="blur"
-                blurDataURL="/assets/logo-color.png"
-                style={{ width: 100, height: 50 }}
-              />
-            )}
+            <Image
+              src={currentTheme === "dark" ? "/assets/logo-white.png" : "/assets/logo-color.png"}
+              alt="logo"
+              width={100}
+              height={50}
+              placeholder="blur"
+              blurDataURL="/assets/logo-white.png"
+              style={{ width: 100, height: 50 }}
+            />
           </Link>
           <div className="flex items-center h-80">
             <div className="items-center h-full hidden desktop:flex tablet:flex text-20">
-              <Link href="/#about" className="px-10 center-layout h-full hover:animate-wiggle">
+              <Link href="/#about" className="px-10 center-layout h-full hover:animate-wiggle dark:hover:text-red-400 hover:text-red-600">
                 About
               </Link>
 
-              <Link href="/#experience" className="px-10 center-layout h-full hover:animate-wiggle">
+              <Link href="/#experience" className="px-10 center-layout h-full hover:animate-wiggle dark:hover:text-red-400 hover:text-red-600">
                 Experience
               </Link>
 
-              <Link href="/game" className="px-10 center-layout h-full text-20 hover:animate-wiggle">
+              <Link href="/game" className="px-10 center-layout h-full text-20 hover:animate-wiggle dark:hover:text-red-400 hover:text-red-600">
                 Game
               </Link>
             </div>

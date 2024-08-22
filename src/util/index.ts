@@ -2,45 +2,27 @@ import toast from "react-hot-toast";
 import CryptoJS from "crypto-js";
 import { initializeApp } from "firebase/app";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { debounce } from "lodash-es";
 
 export const host = process.env.NODE_ENV == "development" ? "http://localhost:3000" : "https://www.lsw.kr";
 
-export const fcmNotification = async () => {
-  const permission = await Notification.requestPermission();
-  if (permission !== "granted") return "";
-  // FIRE-BASE 앱 등록할때 받은 'firebaseConfig' 값
-  const firebaseApp = initializeApp({
-    apiKey: "AIzaSyDDDxWxe9pKzcrM-gbXttZho2uUZbgkIj4",
-    authDomain: "think-tag-app.firebaseapp.com",
-    projectId: "think-tag-app",
-    storageBucket: "think-tag-app.appspot.com",
-    messagingSenderId: "1019901849670",
-    appId: "1:1019901849670:web:660db75f384d0a63bf1a47",
-    measurementId: "G-52M7CDXLVC",
-  });
+export const calcScreen= debounce( ()=>{
+  const width = window.innerWidth
+  const height = window.innerHeight
+  const ratio = 1280/720
+  const canvas = document.getElementById('canvas') as HTMLCanvasElement
+  
+  if(canvas){
 
-  const messaging = getMessaging(firebaseApp);
+    if (width > height * ratio) {
+      canvas.setAttribute('style',`width:${height*ratio}px; height: 100%`)
+    } else {
+      canvas.setAttribute('style',`width:100%; height: ${(width/ratio)}px`)
+    }
 
-  const vapidKey = process.env.NEXT_PUBLIC_VAPID_KEY;
-  // // vapidKey 값 = console.firebase의
-  getToken(messaging, { vapidKey })
-    .then((fcmToken) => {
-      if (fcmToken) {
-        // 정상적으로 토큰이 발급되면 콘솔에 출력합니다.
-        return fcmToken;
-      } else {
-        console.log("No registration token available. Request permission to generate one.");
-      }
-    })
-    .catch((err) => {
-      console.log("An error occurred while retrieving token. ", err);
-    });
-
-  // 메세지가 수신되면 역시 콘솔에 출력합니다.
-  onMessage(messaging, (payload) => {
-    console.log("Message received. ", payload);
-  });
-};
+  }
+  return
+},500,{leading:false, trailing:true})
 
 export const encodeParameter = (params: { [key: string]: string | number | boolean }) => encodeAES(JSON.stringify(params));
 
