@@ -65,20 +65,14 @@ export default class MainScene extends Phaser.Scene
         gsap.to(leftTouch,{y:720/2-20,duration:0.5,repeat:-1,ease:'none'}).yoyo(true)
         gsap.to(rightTouch,{y:720/2-20,duration:0.5,repeat:-1,ease:'none'}).yoyo(true)
 
-        graphic.setInteractive(rect,()=>{
-            pointer.event.stopImmediatePropagation()
-            pointer.event.stopPropagation()
-            if(pointer.isDown) {
-                gsap.globalTimeline.clear()
-                leftTouch.destroy()
-                rightTouch.destroy()
-                console.log('clicked');
-                this.setInterAct()
-                graphic.setActive(false)
-                graphic.setVisible(false)
-                return true
-              }
-              return false
+        this.input.on('pointerdown',()=>{
+            this.input.off('pointerdown')
+            console.log('clicked');
+            gsap.globalTimeline.clear()
+            leftTouch.destroy()
+            rightTouch.destroy()
+            graphic.destroy()
+            this.setInterAct()
         })
 
     }
