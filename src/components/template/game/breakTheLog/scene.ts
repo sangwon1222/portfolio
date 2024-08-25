@@ -43,7 +43,11 @@ export default class MainScene extends Phaser.Scene
           
     }
 
-    async create (){this.add.image(1280/2,720/2,'bg')
+    async create (){
+        const {ok,data} = await getRankApi()
+        console.log({ok,data})
+
+        this.add.image(1280/2,720/2,'bg')
         this.add.sprite(1280/2+80,720-160,'attack-left').setName('attack-left').setAlpha(1).setDepth(1)
         this.add.sprite(1280/2-80,720-160,'attack-right').setName('attack-right').setAlpha(0).setDepth(1)
         
@@ -265,6 +269,7 @@ export default class MainScene extends Phaser.Scene
                 this.rankBtn.destroy()
                 
                 for(let i=0; i<10; i++){
+                    if(!data[i])break;
                     this.add.text(1280/2-140,(i*48)+24, `0${(i+1)}`.slice(-2),{fontSize: "24px", backgroundColor:"0x000", padding:{x:10,y:24},fixedWidth:48}).setOrigin(0.5,0.5).setDepth(10)
                     this.add.text(1280/2,(i*48)+24, `${data[i].nickname}`,{fontSize: "24px", backgroundColor:"0x000", padding:{x:10,y:24},fixedWidth:240}).setOrigin(0.5,0.5).setDepth(10)
                     this.add.text(1280/2+240,(i*48)+24, `score: ${data[i].score}`,{fontSize: "24px", backgroundColor:"0x000", padding:{x:10,y:24}}).setOrigin(0.5,0.5).setDepth(10)
