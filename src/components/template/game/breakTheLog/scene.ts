@@ -10,7 +10,6 @@ export default class MainScene extends Phaser.Scene
     private rankBtn!: Phaser.GameObjects.Text
     private againBtn!: Phaser.GameObjects.Text
     private nameInput!: Phaser.GameObjects.DOMElement
-    private message!: Phaser.GameObjects.Text;
     private returnKey!: Phaser.Input.Keyboard.Key|undefined;
     constructor ()
     {
@@ -206,7 +205,7 @@ export default class MainScene extends Phaser.Scene
         this.rankBtn = this.add.text(1280/2,720/2,"랭킹 등록",{fontSize:"32px", backgroundColor:"0x931C22",padding:{x:24,y:24}}).setOrigin(0.5,0.5)
         this.rankBtn.setInteractive().setDepth(3)
         this.rankBtn.on('pointerdown',async ()=> {
-            const nickname = this.message.text.slice(10).trim()
+            const nickname = nameInput.value.trim()
             if(nickname){
                 await this.regiserRank()
             }else{
@@ -223,18 +222,12 @@ export default class MainScene extends Phaser.Scene
         const nameInput = this.nameInput.getChildByName("name") as HTMLInputElement;
         nameInput.focus()
 
-        this.message = this.add.text(1280/2, 150, "NickName :", {
-            color: "#FFFFFF",
-            fontSize: 60,
-            fontStyle: "bold"
-        }).setOrigin(0.5).setDepth(3);
         
         this.returnKey = this.input.keyboard?.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
         
         this.returnKey?.on("down", async () => {
             nameInput.blur()
             if(nameInput.value != "") {
-                this.message.setText("NickName : " + nameInput.value.trim());
                 await this.regiserRank()
             }
         });
@@ -258,24 +251,21 @@ export default class MainScene extends Phaser.Scene
 
     async regiserRank(){
         const nameInput = this.nameInput.getChildByName("name") as HTMLInputElement;
-        this.message.setVisible(false)
         this.againBtn.setVisible(false)
         this.rankBtn.setVisible(false)
-        this.message.setText("NickName : " + nameInput.value);
-        const nickname = this.message.text.slice(10).trim()
+        const nickname = nameInput.value.trim()
         const score = this.data.get("score") as number
         await registerRankApi("breakthelog",nickname, score)
         const {ok,data} = await getRankApi()
         if(ok){
-            this.message.destroy()
             this.nameInput.destroy()
             this.rankBtn.destroy()
             for(let i=0; i<10; i++){
                 if(!data[i])break;
                 const backgroundColor = data[i].nickname==nickname&& data[i].score ==score?'#931C22':'0x000'
-                this.add.text(1280/2-140,(i*48)+24, `0${(i+1)}`.slice(-2),{fontSize: "24px", backgroundColor, padding:{x:10,y:10},fixedWidth:48}).setOrigin(0.5,0.5).setDepth(10)
-                this.add.text(1280/2,(i*48)+24, `${data[i].nickname}`,{fontSize: "24px", backgroundColor, padding:{x:10,y:10},fixedWidth:240}).setOrigin(0.5,0.5).setDepth(10)
-                this.add.text(1280/2+240,(i*48)+24, `score: ${data[i].score}`,{fontSize: "24px", backgroundColor, padding:{x:10,y:10}}).setOrigin(0.5,0.5).setDepth(10)
+                this.add.text(1280/2-160,(i*48), `0${(i+1)}`.slice(-2),{fontSize: "24px", backgroundColor, padding:{x:10,y:10},fixedWidth:48}).setOrigin(0,0).setDepth(10)
+                this.add.text(1280/2-160+48 ,(i*48), `${data[i].nickname}`,{fontSize: "24px", backgroundColor, padding:{x:10,y:10},fixedWidth:120}).setOrigin(0,0).setDepth(10)
+                this.add.text(1280/2-160+48+120,(i*48), `${data[i].score}점`,{fontSize: "24px", backgroundColor, padding:{x:10,y:10}}).setOrigin(0,0).setDepth(10)
             }
         }
         this.againBtn.setVisible(true)
