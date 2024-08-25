@@ -2,6 +2,7 @@ import { DOMElement } from "react";
 import Log from "./log";
 import gsap from 'gsap'
 import { getRankApi, registerRankApi } from "./breakTheLog";
+import toast from "react-hot-toast";
 export default class MainScene extends Phaser.Scene
 {
     private mLogList: Array<Log>
@@ -44,8 +45,6 @@ export default class MainScene extends Phaser.Scene
     }
 
     async create (){
-        const {ok,data} = await getRankApi()
-        console.log({ok,data})
 
         this.add.image(1280/2,720/2,'bg')
         this.add.sprite(1280/2+80,720-160,'attack-left').setName('attack-left').setAlpha(1).setDepth(1)
@@ -207,11 +206,16 @@ export default class MainScene extends Phaser.Scene
         this.rankBtn = this.add.text(1280/2,720/2,"랭킹 등록",{fontSize:"32px", backgroundColor:"0x931C22",padding:{x:24,y:24}}).setOrigin(0.5,0.5)
         this.rankBtn.setInteractive().setDepth(3)
         this.rankBtn.on('pointerdown',async ()=> {
-            await this.regiserRank()
+            const nickname = this.message.text.slice(10).trim()
+            if(nickname){
+                await this.regiserRank()
+            }else{
+                toast.error('닉네임을 작성해주세요.')
+            }
         })
         
 
-        this.againBtn = this.add.text(1280/2,720/2+100,"다시 하기",{fontSize:"32px", backgroundColor:"0x000",padding:{x:24,y:24}}).setOrigin(0.5,0.5)
+        this.againBtn = this.add.text(1280/2,720-100,"다시 하기",{fontSize:"32px", backgroundColor:"0x000",padding:{x:24,y:24}}).setOrigin(0.5,0.5)
         this.againBtn.setInteractive().setDepth(3)
         this.againBtn.on('pointerdown',()=> window.location.reload() )
 
@@ -258,26 +262,23 @@ export default class MainScene extends Phaser.Scene
         this.againBtn.setVisible(false)
         this.rankBtn.setVisible(false)
         this.message.setText("NickName : " + nameInput.value);
-        const nickname = this.message.text.slice(10)
+        const nickname = this.message.text.slice(10).trim()
         const score = this.data.get("score") as number
         await registerRankApi("breakthelog",nickname, score)
-        setTimeout(async () => {
-            const {ok,data} = await getRankApi()
-            if(ok){
-                this.message.destroy()
-                this.nameInput.destroy()
-                this.rankBtn.destroy()
-                
-                for(let i=0; i<10; i++){
-                    if(!data[i])break;
-                    this.add.text(1280/2-140,(i*48)+24, `0${(i+1)}`.slice(-2),{fontSize: "24px", backgroundColor:"0x000", padding:{x:10,y:24},fixedWidth:48}).setOrigin(0.5,0.5).setDepth(10)
-                    this.add.text(1280/2,(i*48)+24, `${data[i].nickname}`,{fontSize: "24px", backgroundColor:"0x000", padding:{x:10,y:24},fixedWidth:240}).setOrigin(0.5,0.5).setDepth(10)
-                    this.add.text(1280/2+240,(i*48)+24, `score: ${data[i].score}`,{fontSize: "24px", backgroundColor:"0x000", padding:{x:10,y:24}}).setOrigin(0.5,0.5).setDepth(10)
-                }
+        const {ok,data} = await getRankApi()
+        if(ok){
+            this.message.destroy()
+            this.nameInput.destroy()
+            this.rankBtn.destroy()
+            for(let i=0; i<10; i++){
+                if(!data[i])break;
+                const backgroundColor = data[i].nickname==nickname&& data[i].score ==score?'#931C22':'0x000'
+                this.add.text(1280/2-140,(i*48)+24, `0${(i+1)}`.slice(-2),{fontSize: "24px", backgroundColor, padding:{x:10,y:10},fixedWidth:48}).setOrigin(0.5,0.5).setDepth(10)
+                this.add.text(1280/2,(i*48)+24, `${data[i].nickname}`,{fontSize: "24px", backgroundColor, padding:{x:10,y:10},fixedWidth:240}).setOrigin(0.5,0.5).setDepth(10)
+                this.add.text(1280/2+240,(i*48)+24, `score: ${data[i].score}`,{fontSize: "24px", backgroundColor, padding:{x:10,y:10}}).setOrigin(0.5,0.5).setDepth(10)
             }
-            this.againBtn.setY(720-100)
-            this.againBtn.setVisible(true)
-        }, 1000);
+        }
+        this.againBtn.setVisible(true)
     }
 
 }
