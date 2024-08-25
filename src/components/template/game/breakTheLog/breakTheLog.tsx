@@ -4,6 +4,35 @@ import { calcScreen } from "@/util";
 import { useEffect, useRef } from "react";
 import MainScene from "./scene";
 
+export async function getRankApi(): Promise<{ ok: boolean; data: any; msg: string }> {
+  try {
+    const response = await fetch(`/api/rank/breakTheLog`, {
+      method: "GET",
+    });
+    const result = await response.json();
+    return result;
+  } catch (e) {
+    console.error(e);
+    const result = { ok: false, data: [], msg: JSON.stringify(e) };
+    return result;
+  }
+}
+
+export async function registerRankApi(gamename: string, nickname: string, score: number): Promise<{ ok: boolean; msg: string }> {
+  try {
+    const response = await fetch(`/api/rank`, {
+      method: "POST",
+      body: JSON.stringify({ gamename, nickname, score }),
+    });
+    const result = await response.json();
+    return result;
+  } catch (e) {
+    console.error(e);
+    const result = { ok: false, msg: JSON.stringify(e) };
+    return result;
+  }
+}
+
 export default function BreakTheLog() {
   const phaserConfig = {
     parent: "app",
@@ -12,6 +41,7 @@ export default function BreakTheLog() {
     height: 720,
     type: Phaser.AUTO,
     transparent: false,
+    dom: { createContainer: true },
     physics: {
       default: "arcade",
       arcade: {
@@ -22,17 +52,17 @@ export default function BreakTheLog() {
     scene: MainScene,
   };
 
-  // const game = useRef(null);
+  const gameRef = useRef<any>(null);
   useEffect(() => {
     const app = document.getElementById("app");
     app?.replaceChildren();
     // game 레퍼런스에 phaserConfig 로 씬을 생성
     // 씬은 game 레퍼런스에 HTMLcanvas를 그리는 식으로 생성된다.
-    // game.current = new Game(phaserConfig);
-    new Game(phaserConfig);
+    gameRef.current = new Game(phaserConfig);
+    // new Game(phaserConfig);
 
     window.addEventListener("resize", calcScreen, true);
     return () => window.removeEventListener("resize", calcScreen, true);
   }, []);
-  return <div className="App" id="app"></div>;
+  return <div className="App" id="app" ref={gameRef}></div>;
 }
