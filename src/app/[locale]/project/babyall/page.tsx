@@ -50,9 +50,9 @@ export default function babyAll() {
           </li>
 
           <li className="grid grid-cols-1 gap-10 p-40 m-auto border-b">
-            <h4>부모 페이지 </h4>
-            <Image src="/assets/aram/babyall/parents-1.png" alt="부모페이지-1" width={640} height={320}></Image>
-            <Image src="/assets/aram/babyall/parents-2.png" alt="부모페이지-2" width={640} height={320}></Image>
+            <h4>학부모 페이지 </h4>
+            <Image src="/assets/aram/babyall/parents-1.png" alt="학부모페이지-1" width={640} height={320}></Image>
+            <Image src="/assets/aram/babyall/parents-2.png" alt="학부모페이지-2" width={640} height={320}></Image>
           </li>
         </ul>
       </div>

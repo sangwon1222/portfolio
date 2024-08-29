@@ -24,7 +24,7 @@ export default function Tabout() {
 
           <ol className="list-disc px-20">
             <li>웹/앱 서비스 프론트엔드 설계 / 개발 / 운영 경험</li>
-            <li>기획 단계부터 참여한 프로젝트 겸험</li>
+            <li>기획 단계부터 참여한 프로젝트 경험</li>
             <li>다양한 팀과 협업 경험</li>
           </ol>
         </ul>
