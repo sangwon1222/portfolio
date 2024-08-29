@@ -49,6 +49,14 @@ export default async function Home({ params, searchParams }: { params: any; sear
             GO
           </Link>
         </li>
+
+        <li className="overflow-hidden center-layout flex-col gap-10 p-20 w-200 h-300 rounded-xl bg-gray-200 dark:bg-gray-600">
+          <Image src="/assets/rsc/cooking/image/thumbnail.png" width={250} height={250} alt="cooking_thumbnail" className="rounded" />
+          <p className="w-full h-1/2 center-layout">쿠킹</p>
+          <Link href="/game/cooking" className="center-layout w-full h-120 rounded bg-red-400 dark:bg-red-900">
+            GO
+          </Link>
+        </li>
         {/* 
         <li className="center-layout flex-col gap-10 bg-gray-300 dark:text-black w-200 h-200 rounded-xl p-20">
           <p className="w-full h-1/2 center-layout">점핑</p>
