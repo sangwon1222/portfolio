@@ -27,10 +27,7 @@ export default function Cooking() {
   useEffect(() => {
     const app = document.getElementById("app");
     app?.replaceChildren();
-    // game 레퍼런스에 phaserConfig 로 씬을 생성
-    // 씬은 game 레퍼런스에 HTMLcanvas를 그리는 식으로 생성된다.
     gameRef.current = new Game(phaserConfig);
-    // new Game(phaserConfig);
     calcScreen();
     window.addEventListener("resize", calcScreen, true);
     return () => window.removeEventListener("resize", calcScreen, true);
