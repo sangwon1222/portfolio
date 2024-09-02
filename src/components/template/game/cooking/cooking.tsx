@@ -30,7 +30,9 @@ export default function Cooking() {
     gameRef.current = new Game(phaserConfig);
     calcScreen();
     window.addEventListener("resize", calcScreen, true);
-    return () => window.removeEventListener("resize", calcScreen, true);
+    return () => {
+      window.removeEventListener("resize", calcScreen, true);
+    };
   }, []);
   return <div className="App" id="app" ref={gameRef}></div>;
 }

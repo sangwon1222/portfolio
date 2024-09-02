@@ -10,7 +10,6 @@ export async function POST(req: NextRequest) {
 
     if (name) {
       const { rows } = await sql`UPDATE auth SET name = ${name} WHERE id = ${id}`;
-      console.log({ rows });
       return NextResponse.json({ ok: true, data: rows, msg: "이름 변경" }, { status: 200 });
     } else if (password && newPassword) {
       const useAccount = await sql`SELECT * FROM auth WHERE id = ${id}`;

@@ -18,4 +18,6 @@ export default class Buns{
         const tray = this.mIsBun?this.mScene.bunsTray:this.mScene.hotDogBunsTray
         await tray.addBun()
     }
+
+   
 }

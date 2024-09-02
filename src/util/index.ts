@@ -10,7 +10,6 @@ export const calcScreen=  ()=>{
   const width = window.innerWidth
   const height = window.innerHeight
   const ratio = 1280/720
-  // const canvas = document.getElementById('canvas') as HTMLCanvasElement
   const canvas = document.getElementsByTagName('canvas')[0] as HTMLCanvasElement
   if(canvas){
 
@@ -24,24 +23,6 @@ export const calcScreen=  ()=>{
 }
 
 
-// export const calcScreen= debounce( ()=>{
-//   const width = window.innerWidth
-//   const height = window.innerHeight
-//   const ratio = 1280/720
-//   // const canvas = document.getElementById('canvas') as HTMLCanvasElement
-//   const canvas = document.getElementsByTagName('canvas')[0] as HTMLCanvasElement
-//   console.log(canvas)
-//   if(canvas){
-
-//     if (width > height * ratio) {
-//       canvas.setAttribute('style',`width:${height*ratio}px; height: 100%`)
-//     } else {
-//       canvas.setAttribute('style',`width:100%; height: ${(width/ratio)}px`)
-//     }
-
-//   }
-//   return
-// },500,{leading:false, trailing:true})
 
 export const encodeParameter = (params: { [key: string]: string | number | boolean }) => encodeAES(JSON.stringify(params));
 
