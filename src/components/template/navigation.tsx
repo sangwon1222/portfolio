@@ -61,6 +61,9 @@ export default function Navigation() {
             </div>
 
             <DarkBtn />
+            <Link href="https://github.com/sangwon1222">
+              <Image src="/assets/Git_icon.png" width={40} height={40} className="w-40 h-40" alt="git_icon" />
+            </Link>
           </div>
         </div>
 
