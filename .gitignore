@@ -40,3 +40,5 @@ yarn-error.log*
 **/public/sw.js
 **/public/sw.*.map
 **/public/worker-*.js
+
+*.lock

@@ -11,7 +11,7 @@ export default function Texperience() {
         <h3 className="px-2 m-auto w-fit text-center relative after:contents-[''] after:block after:absolute after:w-full after:h-2 after:bg-red-400 after:z-[1] after:left-0 after:bottom-0 after:animate-pulse animate-pulse">
           <span className="relative z-[2] py-6">EXPERIENCE</span>
         </h3>
-        <div className="flex flex-col gap-5 p-2 desktop:p-2 tablet:p-7 min-w-96 max-w-[700px] w-full">
+        <div className="flex flex-col gap-5 p-2 desktop:p-2 tablet:p-7 min-w-[320px] max-w-[700px] w-full">
           <Grid1Ratio2 label="소니드" period="2023.03 ~ 2024.07" href="http://www.sonid.co.kr/">
             <ProjectCard label="sonid 자체웹 개발" hashtagList={["next.js", "react", "pwa"]} projectLink="" />
             <ProjectCard label="효성 라벨 프린트 프로그램 유지보수" hashtagList={["c#"]} projectLink="" />
@@ -27,9 +27,21 @@ export default function Texperience() {
           </Grid1Ratio2>
 
           <Grid1Ratio2 label="미니게이트" period="2020.05 ~ 2021.08" href="https://www.minigate.net/">
-            <ProjectCard label="아람북클럽 베이비올 게임 개발" hashtagList={["vue2", "pixi.js"]} projectLink="/project/babyall" />
-            <ProjectCard label="아람북클럽 하루한글 게임 개발" hashtagList={["vue2", "pixi.js"]} projectLink="/project/hangul" />
-            <ProjectCard label="리틀홈런 영어누리 콘텐츠 HTML5 기반 게임 개발" hashtagList={["vue2", "pixi.js"]} projectLink="" />
+            <ProjectCard
+              label="아람북클럽 베이비올 게임 개발"
+              hashtagList={["vue2", "pixi.js"]}
+              projectLink="/project/babyall"
+            />
+            <ProjectCard
+              label="아람북클럽 하루한글 게임 개발"
+              hashtagList={["vue2", "pixi.js"]}
+              projectLink="/project/hangul"
+            />
+            <ProjectCard
+              label="리틀홈런 영어누리 콘텐츠 HTML5 기반 게임 개발"
+              hashtagList={["vue2", "pixi.js"]}
+              projectLink=""
+            />
             <ProjectCard label="천재교육 타자 HTML5 기반 게임 개발" hashtagList={["vue2", "pixi.js"]} projectLink="" />
             <ProjectCard label="자사 MEW HTML5 기반 게임 개발" hashtagList={["vue2", "pixi.js"]} projectLink="" />
           </Grid1Ratio2>

@@ -8,7 +8,7 @@ export default function Tabout() {
         <h3 className="px-2 m-auto w-fit text-center relative after:contents-[''] after:block after:absolute after:w-full after:h-2 after:bg-red-400 after:z-[1] after:left-0 after:bottom-0 after:animate-pulse animate-pulse">
           <span className="relative z-[2] py-6">ABOUT</span>
         </h3>
-        <ul className="flex flex-col gap-5 p-3 desktop:p-10 tablet:p-7 border min-w-96 max-w-[700px] w-full">
+        <ul className="flex flex-col gap-5 p-3 desktop:p-10 tablet:p-7 border min-w-[320px] max-w-[700px] w-full">
           <li className="flex flex-col gap-3">
             <p className="text-xl">이상원</p>
             <p className="flex">
