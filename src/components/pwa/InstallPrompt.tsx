@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const newDate = new Date();
 const year = newDate.getFullYear();
@@ -9,44 +9,56 @@ const day = newDate.getDate();
 const today = `${year}${month}${day}`;
 
 const isDeviceIOS = typeof window !== "undefined" && /iPad|iPhone|iPod/.test(window.navigator.userAgent.toLowerCase());
-const askedDate = typeof window !== "undefined" ? localStorage.getItem("a") : null;
 
 export default function InstallPrompt() {
   const refPwa = useRef<HTMLDivElement>(null);
   const [pwaPrompt, setPrompt] = useState<any>(null);
+  const [askedDate, setAsked] = useState<string | null>(null);
 
-  const handleBeforeInstallPrompt = (e: any) => {
-    e.preventDefault();
-    setPrompt(e);
-  };
+  const isPwaInstalled = useCallback(
+    () => (typeof window === "undefined" ? false : window.matchMedia("(display-mode: standalone)").matches),
+    [],
+  );
 
   useEffect(() => {
-    refPwa.current?.classList.remove("-top-[400px]");
-    refPwa.current?.classList.add("top-4");
-    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    const storedDate = localStorage.getItem("a") ?? "";
+    setAsked(storedDate);
+  }, []);
 
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: any) => {
+      e.preventDefault();
+      setPrompt(e);
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     return () => window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
   }, [pwaPrompt]);
 
   const install = () => {
     if (pwaPrompt) pwaPrompt.prompt();
+    closePrompt();
+  };
+
+  const closePrompt = () => {
     refPwa.current?.classList.remove("top-4");
     refPwa.current?.classList.add("-top-[400px]");
   };
 
   const unInstall = () => {
-    localStorage.setItem("a", `${today}`);
-    refPwa.current?.classList.remove("top-4");
-    refPwa.current?.classList.add("-top-[400px]");
+    setAsked(today);
+    localStorage.setItem("a", today);
+    closePrompt();
   };
-
-  return askedDate == `${today.toString()}` || isDeviceIOS ? null : (
+  if (askedDate === null) return null;
+  if (isPwaInstalled() || askedDate === today || isDeviceIOS) return null;
+  return (
     <div
       ref={refPwa}
       className={`
         overflow-hidden
         fixed 
-        -top-[400px] 
+        top-4
         right-0 rounded 
         flex 
         flex-col 

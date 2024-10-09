@@ -22,5 +22,7 @@ export const config = {
    * favicon.ico (파비콘 파일)
    * 로 시작하지 않는 모든 요청 경로와 일치합니다.
    */
-  matcher: ["/((?!api|static|_next|asset|firebase-messaging-sw.js|manifest.webmanifest|sw.js|favicon.ico|robots.txt).*)"],
+  matcher: [
+    "/((?!api|static|_next|asset|firebase-messaging-sw.js|manifest.webmanifest|sw.js|favicon.ico|robots.txt).*)",
+  ],
 };

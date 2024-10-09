@@ -16,11 +16,13 @@ export function Provider({ locale, children }: ProviderProps) {
     <DarkModeProvider>
       <ListMobileProvider>
         <LoadingProvider>
-          <RecoilRootProvider>
-            <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
-          </RecoilRootProvider>
+          <RecoilRootProvider>{children}</RecoilRootProvider>
         </LoadingProvider>
       </ListMobileProvider>
     </DarkModeProvider>
   );
+}
+
+{
+  /* <I18nProviderClient locale={locale}></I18nProviderClient> */
 }
