@@ -45,16 +45,18 @@ const gameList = [
 export default async function GamePage({ params, searchParams }: { params: any; searchParams: any }) {
   return (
     <div className="overflow-hidden flex flex-col items-center gap-3">
-      <ul className="grid grid-cols-2 desktop:grid-cols-4 tablet:grid-cols-2 gap-8 py-3" aria-label="game list">
+      <ul className="grid grid-cols-1 desktop:grid-cols-3 tablet:grid-cols-2 gap-9 py-10" aria-label="game list">
         {gameList.map(({ src, alt, label, href }, i) => (
           <li
-            className="overflow-hidden center-layout flex-col gap-2 p-5 w-52 h-80 bg-gray-100 dark:bg-gray-700 rounded-xl"
+            className="overflow-hidden center-layout flex-col gap-3 p-5 w-full bg-gray-100 dark:bg-gray-700 rounded-xl"
             key={`${label}-${i}`}
             aria-label={`${label} game button`}
           >
-            <Image src={src} width={250} height={250} alt={alt} className="rounded" priority={false} />
-            <p className="w-full h-1/2 center-layout">{label}</p>
-            <Link href={href} className="center-layout w-full h-120 rounded bg-red-400 dark:bg-red-900">
+            <div className="relative w-[250px] h-[250px]">
+              <Image src={src} alt={alt} fill className="rounded aspect-square object-contain" priority={false} />
+            </div>
+            <p className="w-full text-center">{label}</p>
+            <Link href={href} className="center-layout w-full h-11 rounded bg-red-400 dark:bg-red-900">
               GO
             </Link>
           </li>
