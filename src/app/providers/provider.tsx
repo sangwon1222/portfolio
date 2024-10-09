@@ -6,11 +6,10 @@ import DarkModeProvider from "./theme/themeProvider";
 import { type ReactNode } from "react";
 
 type ProviderProps = {
-  locale: string;
   children: ReactNode;
 };
 
-export function Provider({ locale, children }: ProviderProps) {
+export function Provider({ children }: ProviderProps) {
   return (
     <DarkModeProvider>
       <ListMobileProvider>

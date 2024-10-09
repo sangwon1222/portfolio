@@ -28,13 +28,11 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
 }>) {
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <body className={`${notoSansKr.className} min-w-[320px]`}>
         <Analytics />
         <SpeedInsights />
@@ -42,7 +40,7 @@ export default async function RootLayout({
         <Toaster />
         <InstallPrompt />
 
-        <Provider locale={locale}>
+        <Provider>
           <Suspense fallback={<Loading />}>
             <div>
               <Navigation />
