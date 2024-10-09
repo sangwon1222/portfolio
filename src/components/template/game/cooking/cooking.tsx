@@ -1,12 +1,11 @@
 "use client";
-import * as Phaser from "phaser";
-import { Game } from "phaser";
+import useLoading from "@/app/[locale]/providers/loding/useLoading";
+import Loading from "@/components/loading";
 import { calcScreen } from "@/util";
 import { useEffect } from "react";
+import * as Phaser from "phaser";
 import MainScene from "./scene";
-import Loading from "@/components/loading";
-import { useRecoilState } from "recoil";
-import useLoading from "@/app/[locale]/providers/loding/useLoading";
+import { Game } from "phaser";
 
 const phaserConfig = {
   parent: "phaser-app",

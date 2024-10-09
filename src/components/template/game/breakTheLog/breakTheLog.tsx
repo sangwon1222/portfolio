@@ -1,10 +1,10 @@
 "use client";
-import Loading from "@/components/loading";
-import { useRecoilState } from "recoil";
-import Phaser, { Game } from "phaser";
-import { useEffect } from "react";
-import MainScene from "./scene";
 import useLoading from "@/app/[locale]/providers/loding/useLoading";
+import Loading from "@/components/loading";
+import { useEffect } from "react";
+import * as Phaser from "phaser";
+import MainScene from "./scene";
+import { Game } from "phaser";
 
 // 공통 API 호출 함수
 async function apiRequest(url: string, options: RequestInit): Promise<any> {
