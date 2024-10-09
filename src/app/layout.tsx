@@ -8,7 +8,7 @@ import { Toaster } from "react-hot-toast";
 import { Provider } from "./providers/provider";
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import "../globals.css";
+import "./globals.css";
 
 const notoSansKr = Noto_Sans_KR({
   subsets: ["latin"],
