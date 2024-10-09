@@ -1,6 +1,6 @@
 "use client";
 
-import useTheme from "@/app/[locale]/providers/theme/useTheme";
+import useTheme from "@/app/providers/theme/useTheme";
 import Image from "next/image";
 import Link from "next/link";
 

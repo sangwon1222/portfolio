@@ -1,7 +1,6 @@
 export function GET() {
   return new Response(
-    `User-agent: *
-    Allow: /
+    `user-agent: *
     Sitemap: https://lsw.kr/sitemap.xml`,
     {
       headers: {

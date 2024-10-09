@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useEffect } from "react";
-import useTheme from "@/app/[locale]/providers/theme/useTheme";
+import useTheme from "@/app/providers/theme/useTheme";
 
 const DarkBtn = memo(() => {
   const { theme, toggleTheme } = useTheme();
@@ -13,7 +13,11 @@ const DarkBtn = memo(() => {
   }, [theme]);
 
   return (
-    <button className={`rounded-full w-16 h-9 mx-4 dark:bg-gray-400 bg-gray-300`} onClick={toggleTheme} aria-label="dark mode button">
+    <button
+      className={`rounded-full w-16 h-9 mx-4 dark:bg-gray-400 bg-gray-300`}
+      onClick={toggleTheme}
+      aria-label="dark mode button"
+    >
       <div className={`dark:ml-1 ml-7 duration-200 bg-gray-800  w-7 h-7 center-layout rounded-full`}>
         <svg
           stroke="currentColor"

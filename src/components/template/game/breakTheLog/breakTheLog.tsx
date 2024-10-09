@@ -1,5 +1,5 @@
 "use client";
-import useLoading from "@/app/[locale]/providers/loding/useLoading";
+import useLoading from "@/app/providers/loding/useLoading";
 import Loading from "@/components/loading";
 import { useEffect } from "react";
 import * as Phaser from "phaser";

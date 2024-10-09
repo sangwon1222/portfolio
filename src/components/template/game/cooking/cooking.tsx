@@ -1,5 +1,5 @@
 "use client";
-import useLoading from "@/app/[locale]/providers/loding/useLoading";
+import useLoading from "@/app/providers/loding/useLoading";
 import Loading from "@/components/loading";
 import { calcScreen } from "@/util";
 import { useEffect } from "react";

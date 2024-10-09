@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import ListBtn from "@/components/atoms/aListBtn";
 import DarkBtn from "@/components/atoms/aDarkBtn";
-import useTheme from "@/app/[locale]/providers/theme/useTheme";
-import useListMobile from "@/app/[locale]/providers/listMobile/useListMobile";
+import useTheme from "@/app/providers/theme/useTheme";
+import useListMobile from "@/app/providers/listMobile/useListMobile";
 import { memo } from "react";
 
 const btnList = [
@@ -62,15 +62,29 @@ const Navigation: React.FC = memo(() => {
 
               <DarkBtn />
               <Link href="https://github.com/sangwon1222">
-                <Image src="/assets/Git_icon.png" width={40} height={40} className="w-10 h-10" alt="git_icon" priority={false} />
+                <Image
+                  src="/assets/Git_icon.png"
+                  width={40}
+                  height={40}
+                  className="w-10 h-10"
+                  alt="git_icon"
+                  priority={false}
+                />
               </Link>
             </div>
           </div>
 
           {/* MOBILE NAV */}
-          <div className={`desktop:hidden tablet:hidden ${open ? "flex" : "hidden"} flex-col w-full h-screen dark:bg-gray-800 bg-gray-200 text-base`}>
+          <div
+            className={`desktop:hidden tablet:hidden ${open ? "flex" : "hidden"} flex-col w-full h-screen dark:bg-gray-800 bg-gray-200 text-base`}
+          >
             {btnList.map(({ label, href }, i) => (
-              <button onClick={() => goPage(href)} key={`${label}-button-${i}`} className="py-5 px-7 text-start" aria-label={`go ${label} page`}>
+              <button
+                onClick={() => goPage(href)}
+                key={`${label}-button-${i}`}
+                className="py-5 px-7 text-start"
+                aria-label={`go ${label} page`}
+              >
                 {label}
               </button>
             ))}
