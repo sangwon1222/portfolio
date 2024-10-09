@@ -8,8 +8,8 @@ const month = `0${newDate.getMonth() + 1}`.slice(-2);
 const day = newDate.getDate();
 const today = `${year}${month}${day}`;
 
-const isDeviceIOS = /iPad|iPhone|iPod/.test(window.navigator.userAgent.toLowerCase());
-const askedDate = localStorage.getItem("a");
+const isDeviceIOS = typeof window !== "undefined" && /iPad|iPhone|iPod/.test(window.navigator.userAgent.toLowerCase());
+const askedDate = typeof window !== "undefined" ? localStorage.getItem("a") : null;
 
 export default function InstallPrompt() {
   const refPwa = useRef<HTMLDivElement>(null);
@@ -26,7 +26,7 @@ export default function InstallPrompt() {
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
     return () => window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-  }, [pwaPrompt, today]);
+  }, [pwaPrompt]);
 
   const install = () => {
     if (pwaPrompt) pwaPrompt.prompt();
