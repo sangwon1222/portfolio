@@ -11,7 +11,6 @@ export default class MainScene extends Phaser.Scene {
   private returnKey!: Phaser.Input.Keyboard.Key | undefined;
   constructor() {
     super();
-    console.log("create scene");
     this.mLogList = [];
   }
 
@@ -204,14 +203,20 @@ export default class MainScene extends Phaser.Scene {
     this.input.off("pointerdown");
     this.children.getByName("attack-right")?.destroy();
     this.children.getByName("attack-left")?.destroy();
-    (this.children.getByName("scoreText") as Phaser.GameObjects.Text).setText("Score" + (this.data.get("score") as number));
+    (this.children.getByName("scoreText") as Phaser.GameObjects.Text).setText(
+      "Score" + (this.data.get("score") as number),
+    );
 
     const dimmed = this.children.getByName("dimmed") as Phaser.GameObjects.Graphics;
     dimmed?.setActive(true);
     dimmed?.setVisible(true);
 
     this.rankBtn = this.add
-      .text(1280 / 2, 720 / 2, "랭킹 등록", { fontSize: "32px", backgroundColor: "0x931C22", padding: { x: 24, y: 24 } })
+      .text(1280 / 2, 720 / 2, "랭킹 등록", {
+        fontSize: "32px",
+        backgroundColor: "0x931C22",
+        padding: { x: 24, y: 24 },
+      })
       .setOrigin(0.5, 0.5);
     this.rankBtn.setInteractive().setDepth(3);
     this.rankBtn.on("pointerdown", async () => {
@@ -255,7 +260,9 @@ export default class MainScene extends Phaser.Scene {
     this.mLogList[0].clear();
     this.mLogList.splice(0, 1);
     this.data.set("score", (this.data.get("score") as number) + 10);
-    (this.children.getByName("scoreText") as Phaser.GameObjects.Text).setText("Score: " + (this.data.get("score") as number));
+    (this.children.getByName("scoreText") as Phaser.GameObjects.Text).setText(
+      "Score: " + (this.data.get("score") as number),
+    );
     this.mLogContainer.y += 80;
 
     this.makeRandomLogs();
@@ -278,7 +285,12 @@ export default class MainScene extends Phaser.Scene {
           if (!data[i]) break;
           const backgroundColor = data[i].nickname == nickname && data[i].score == score ? "#931C22" : "0x000";
           this.add
-            .text(1280 / 2 - 160, i * 48, `0${i + 1}`.slice(-2), { fontSize: "24px", backgroundColor, padding: { x: 10, y: 10 }, fixedWidth: 48 })
+            .text(1280 / 2 - 160, i * 48, `0${i + 1}`.slice(-2), {
+              fontSize: "24px",
+              backgroundColor,
+              padding: { x: 10, y: 10 },
+              fixedWidth: 48,
+            })
             .setOrigin(0, 0)
             .setDepth(10);
           this.add
@@ -291,7 +303,11 @@ export default class MainScene extends Phaser.Scene {
             .setOrigin(0, 0)
             .setDepth(10);
           this.add
-            .text(1280 / 2 - 160 + 48 + 120, i * 48, `${data[i].score}점`, { fontSize: "24px", backgroundColor, padding: { x: 10, y: 10 } })
+            .text(1280 / 2 - 160 + 48 + 120, i * 48, `${data[i].score}점`, {
+              fontSize: "24px",
+              backgroundColor,
+              padding: { x: 10, y: 10 },
+            })
             .setOrigin(0, 0)
             .setDepth(10);
         }

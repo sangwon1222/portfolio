@@ -8,7 +8,6 @@ const ListMobileProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 600px)");
-    console.log(mediaQuery);
     if (isOpen) document.body.classList.add("overflow-hidden");
     else document.body.classList.remove("overflow-hidden");
   }, [isOpen]);

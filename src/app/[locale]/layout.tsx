@@ -9,7 +9,6 @@ import { Provider } from "./providers/provider";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import "../globals.css";
-import { useRouter } from "next/navigation";
 
 const notoSansKr = Noto_Sans_KR({
   subsets: ["latin"],
