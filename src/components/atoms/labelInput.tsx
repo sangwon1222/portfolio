@@ -81,7 +81,7 @@ export default function LabelInput({
 
         {/* 버튼이벤트 */}
         {buttonLabel ? (
-          <button className={customButtonCss} onClick={buttonEvent}>
+          <button className={customButtonCss} onClick={buttonEvent} aria-label={`${label} button`}>
             {buttonLabel}
           </button>
         ) : null}

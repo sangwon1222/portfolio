@@ -1,24 +1,36 @@
-import BreakTheLog from "@/components/template/game/breakTheLog/breakTheLog";
+import Loading from "@/components/loading";
 import { Metadata, ResolvingMetadata } from "next";
+import dynamic from "next/dynamic";
 
-export async function generateMetadata({ params, searchParams }: TypeMetaProps, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata(
+  { params, searchParams }: TypeMetaProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
   return {
     title: `LSW-APP-Break-The-Log`,
     description: `LSW-APP-Break-The-Log`,
+    keywords: "미니 게임,HTML5,webGL,pixi,phaser",
     openGraph: {
       title: `LSW-APP-Break-The-Log`,
-      description: `LSW-APP-Break-The-Log`,
-      type: "article",
+      url: "https://lsw.kr/game/breakTheLog/",
+      description: `LSW-Portfolio-Break-The-Log`,
       publishedTime: "2023-01-01T00:00:00.000Z",
-      images: ["https://www.lsw.kr/assets/thumbnail/home.png"],
+      images: [
+        {
+          url: "https://www.lsw.kr/assets/images/thumbnails/breakTheLog.jpg",
+          width: 1280,
+          height: 720,
+          alt: "나무패기 게임 썸네일",
+        },
+      ],
     },
   };
 }
 
+const BreakTheLogGame = dynamic(() => import("@/components/template/game/breakTheLog/breakTheLog"), {
+  ssr: false,
+  loading: () => <Loading />,
+});
 export default async function BreakTheLogLayout({ params, searchParams }: { params: any; searchParams: any }) {
-  return (
-    <div className="fixed top-0 left-0 w-screen h-screen bg-black center-layout z-40">
-      <BreakTheLog />
-    </div>
-  );
+  return <BreakTheLogGame />;
 }

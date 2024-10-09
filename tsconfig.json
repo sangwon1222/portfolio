@@ -33,7 +33,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "build/types/**/*.ts"
-, "src/worker/index.js"  ],
+, "src/worker/index.js",
+ "src/index.d.ts"
+  ],
   "exclude": [
     "node_modules"
   ]

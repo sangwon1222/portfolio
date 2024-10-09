@@ -3,6 +3,23 @@ declare type TypeMetaProps = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
+type LoadingContextType = {
+  isLoading: boolean;
+  setLoadingState: (v: boolean) => void;
+};
+
+declare type ThemeType = "light" | "dark";
+
+declare type ThemeContextType = {
+  theme: "light" | "dark";
+  toggleTheme: () => void;
+};
+
+declare type ListMobileContextType = {
+  open: boolean;
+  setListMobile: (v: boolean) => void;
+};
+
 declare type ContactType = {
   [key: string]: string;
 };
@@ -61,13 +78,6 @@ declare interface ILabelInputProps {
   whiteSpace?: boolean;
   initValue?: string;
   disabled?: boolean;
-}
-
-declare interface ICustomBtnProps {
-  clickEvent: (text?: string | undefined) => void;
-  label: string;
-  arg?: string | undefined;
-  customCss?: string | undefined;
 }
 
 declare interface ILineTextProps {

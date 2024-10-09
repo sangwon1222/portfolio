@@ -6,12 +6,12 @@ import ProjectCard from "./tProjectCard";
 export default function Texperience() {
   return (
     <>
-      <div id="experience" />
-      <div className="flex flex-col items-center gap-40 p-40 w-full">
-        <h3 className="px-10 m-auto w-fit text-center relative after:contents-[''] after:block after:absolute after:w-full after:h-10 after:bg-red-400 after:z-[1] after:left-0 after:bottom-0 after:animate-pulse animate-pulse">
-          <span className="relative z-[2]">EXPERIENCE</span>
+      <div id="experience" className="h-20" />
+      <div className="flex flex-col items-center gap-10 px-2 w-full">
+        <h3 className="px-2 m-auto w-fit text-center relative after:contents-[''] after:block after:absolute after:w-full after:h-2 after:bg-red-400 after:z-[1] after:left-0 after:bottom-0 after:animate-pulse animate-pulse">
+          <span className="relative z-[2] py-6">EXPERIENCE</span>
         </h3>
-        <div className="flex flex-col gap-20 p-10 desktop:p-40 tablet:p-30 min-w-420 max-w-700 w-full">
+        <div className="flex flex-col gap-5 p-2 desktop:p-2 tablet:p-7 min-w-96 max-w-[700px] w-full">
           <Grid1Ratio2 label="소니드" period="2023.03 ~ 2024.07" href="http://www.sonid.co.kr/">
             <ProjectCard label="sonid 자체웹 개발" hashtagList={["next.js", "react", "pwa"]} projectLink="" />
             <ProjectCard label="효성 라벨 프린트 프로그램 유지보수" hashtagList={["c#"]} projectLink="" />

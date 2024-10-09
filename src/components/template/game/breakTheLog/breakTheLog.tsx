@@ -1,62 +1,86 @@
 "use client";
+import Loading from "@/components/loading";
+import { useRecoilState } from "recoil";
 import Phaser, { Game } from "phaser";
-import { calcScreen } from "@/util";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import MainScene from "./scene";
+import useLoading from "@/app/[locale]/providers/loding/useLoading";
 
-export async function getRankApi(): Promise<{ ok: boolean; data: any; msg: string }> {
+// 공통 API 호출 함수
+async function apiRequest(url: string, options: RequestInit): Promise<any> {
   try {
-    const response = await fetch(`/api/rank/breakTheLog`, {
-      method: "GET",
+    const response = await fetch(url, {
+      ...options,
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
     const result = await response.json();
     return result;
-  } catch (e) {
-    console.error(e);
-    const result = { ok: false, data: [], msg: JSON.stringify(e) };
-    return result;
+  } catch (error) {
+    console.error(error);
+    return { ok: false, msg: error instanceof Error ? error.message : String(error) };
   }
 }
 
-export async function registerRankApi(gamename: string, nickname: string, score: number): Promise<{ ok: boolean; msg: string }> {
-  try {
-    const response = await fetch(`/api/rank`, {
-      method: "POST",
-      body: JSON.stringify({ gamename, nickname, score }),
-    });
-    const result = await response.json();
-    return result;
-  } catch (e) {
-    console.error(e);
-    const result = { ok: false, msg: JSON.stringify(e) };
-    return result;
-  }
-}
+export const getRankApi = () => apiRequest("/api/rank/breakTheLog", { method: "GET" });
+
+export const registerRankApi = (gamename: string, nickname: string, score: number) =>
+  apiRequest("/api/rank", {
+    method: "POST",
+    body: JSON.stringify({ gamename, nickname, score }),
+  });
+
+const phaserConfig = {
+  parent: "phaser-app",
+  width: 1280,
+  height: 720,
+  type: Phaser.AUTO,
+  transparent: false,
+  dom: { createContainer: true },
+  scale: {
+    mode: Phaser.Scale.NONE,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+  },
+  physics: {
+    default: "arcade",
+    arcade: {
+      debug: false,
+      gravity: { x: 0, y: 0 },
+    },
+  },
+  scene: MainScene,
+};
 
 export default function BreakTheLog() {
-  const phaserConfig = {
-    parent: "app",
-    mode: Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
-    width: 1280,
-    height: 720,
-    type: Phaser.AUTO,
-    transparent: false,
-    dom: { createContainer: true },
-    physics: {
-      default: "arcade",
-      arcade: {
-        debug: false,
-        gravity: { x: 0, y: 0 },
-      },
-    },
-    scene: MainScene,
-  };
+  const { isLoading, setLoadingState } = useLoading();
 
-  const gameRef = useRef<any>(null);
+  const handleOnLoading = () => setLoadingState(true);
+  const handleLoaded = () => setLoadingState(false);
+
   useEffect(() => {
-    const app = document.getElementById("app");
+    const app = document.getElementById("phaser-app");
     app?.replaceChildren();
-    gameRef.current = new Game(phaserConfig);
+
+    const gameRef = new Game(phaserConfig) as Phaser.Game;
+    gameRef.events.on("onLoading", handleOnLoading);
+    gameRef.events.on("loaded", handleLoaded);
+
+    return () => {
+      gameRef.events.off("onLoading", handleOnLoading);
+      gameRef.events.off("loaded", handleLoaded);
+      gameRef.destroy(true);
+    };
   }, []);
-  return <div className="App" id="app" ref={gameRef}></div>;
+  return (
+    <div className="flex flex-col justify-center w-full h-screen bg-black">
+      {isLoading ? <Loading /> : null}
+      <div id="phaser-app" />
+    </div>
+  );
 }

@@ -35,6 +35,7 @@ export default function GoTopBtn() {
       ${showBtn ? "w-80 h-80" : "w-0 h-0"}`}
       style={{ background: "center / 80px 80px no-repeat url(/assets/top-button.png)" }}
       onClick={goTop}
+      aria-label="top button"
     />
   );
 }

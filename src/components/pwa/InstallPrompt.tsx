@@ -53,17 +53,17 @@ export default function InstallPrompt() {
       <p>Install App?</p>
       <div className="flex gap-10 w-full">
         <div className="flex justify-center items-center bg-white rounded-md p-10 w-[60px] h-[60px]">
-          <Image src="/assets/icon-192x192.png" alt="logo" width={100} height={100} />
+          <Image src="/assets/icon-192x192.png" alt="logo" width={100} height={100} priority={false} />
         </div>
         <div className="flex flex-col gap-4">
           <p>LSW App</p>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-4">
-        <button className="border-main-2 border-2 py-2 rounded" onClick={unInstall}>
+        <button className="border-main-2 border-2 py-2 rounded" onClick={unInstall} aria-label="App 설치 팝업 닫기 버튼">
           취소
         </button>
-        <button className="py-2 rounded text-white bg-main-2" onClick={install}>
+        <button className="py-2 rounded text-white bg-main-2" onClick={install} aria-label="App 설치 버튼">
           APP 설치
         </button>
       </div>

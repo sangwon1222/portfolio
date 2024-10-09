@@ -1,33 +1,36 @@
 import toast from "react-hot-toast";
 import CryptoJS from "crypto-js";
-import { initializeApp } from "firebase/app";
-import { getMessaging, getToken, onMessage } from "firebase/messaging";
-import { debounce } from "lodash-es";
 
 export const host = process.env.NODE_ENV == "development" ? "http://localhost:3000" : "https://www.lsw.kr";
 
-export const calcScreen=  ()=>{
-  const width = window.innerWidth
-  const height = window.innerHeight
-  const ratio = 1280/720
-  const canvas = document.getElementsByTagName('canvas')[0] as HTMLCanvasElement
-  if(canvas){
-
-    if (width > height * ratio) {
-      canvas.setAttribute('style',`width:${height*ratio}px; height: 100%`)
-    } else {
-      canvas.setAttribute('style',`width:100%; height: ${(width/ratio)}px`)
-    }
-
+export const calcScreen = (game: Phaser.Game | null = null) => {
+  const canvas = game ? game.canvas : (document.getElementsByTagName("canvas")[0] as HTMLCanvasElement);
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const guide = document.getElementById("canvas-scale-guide") as HTMLDivElement;
+  if (width > height) {
+    guide?.classList.add("!hidden");
+  } else {
+    guide?.classList.remove("!hidden");
   }
-}
+  const windowRatio = width / height;
+  const gameRatio = 1280 / 720;
 
+  if (windowRatio < gameRatio) {
+    canvas.style.width = width < 320 ? "320px" : width + "px";
+    canvas.style.height = width < 320 ? "180px" : width / gameRatio + "px";
+  } else {
+    canvas.style.width = height * gameRatio + "px";
+    canvas.style.height = height + "px";
+  }
+};
 
-
-export const encodeParameter = (params: { [key: string]: string | number | boolean }) => encodeAES(JSON.stringify(params));
+export const encodeParameter = (params: { [key: string]: string | number | boolean }) =>
+  encodeAES(JSON.stringify(params));
 
 // 이메일 정규식
-export const regexEmail = (email: string) => /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(email);
+export const regexEmail = (email: string) =>
+  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(email);
 
 // 클립보드 복사
 export const copy = (text: string) => {

@@ -1,16 +1,16 @@
-import Loading from "@/components/loading";
-import InstallPrompt from "@/components/pwa/InstallPrompt";
-import RecoilRootProvider from "@/components/recoilRootProvider";
-import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import type { Metadata } from "next";
-import { Noto_Sans_KR } from "next/font/google";
-import { Suspense } from "react";
-import { Toaster } from "react-hot-toast";
-import "../globals.css";
-import { Provider } from "./provider";
+import InstallPrompt from "@/components/pwa/InstallPrompt";
 import Navigation from "@/components/template/navigation";
-import DarkModeProvider from "./themeProvider";
+import { Analytics } from "@vercel/analytics/react";
+import { Noto_Sans_KR } from "next/font/google";
+import Loading from "@/components/loading";
+import { Toaster } from "react-hot-toast";
+import { Provider } from "./providers/provider";
+import type { Metadata } from "next";
+import { Suspense } from "react";
+import "../globals.css";
+import { useRouter } from "next/navigation";
+
 const notoSansKr = Noto_Sans_KR({
   subsets: ["latin"],
   weight: ["100", "400", "700", "900"],
@@ -40,23 +40,19 @@ export default async function RootLayout({
         <Analytics />
         <SpeedInsights />
 
-        <DarkModeProvider>
-          <RecoilRootProvider>
-            <Toaster />
-            <InstallPrompt />
+        <Toaster />
+        <InstallPrompt />
 
-            <Provider locale={locale}>
+        <Provider locale={locale}>
+          <Suspense fallback={<Loading />}>
+            <div>
               <Navigation />
-              <main className="min-w-[320px] w-full  duration-300">
-                <div className="relative max-w-[1280px] w-full m-auto">
-                  <Suspense fallback={<Loading />}>
-                    <div className="m-auto  w-full">{children}</div>
-                  </Suspense>
-                </div>
+              <main className="min-w-[320px] w-full h-full overflow-hidden duration-300">
+                <div className="relative w-full h-full m-auto">{children}</div>
               </main>
-            </Provider>
-          </RecoilRootProvider>
-        </DarkModeProvider>
+            </div>
+          </Suspense>
+        </Provider>
       </body>
     </html>
   );

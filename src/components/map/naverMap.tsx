@@ -119,7 +119,7 @@ const Map = ({ mapId = "map", initialCenter = INITIAL_CENTER, initialZoom = INIT
           zIndex: "2",
         }}
       >
-        <button className="absolute top-0 right-0 z-[3] text-2xl p-2" onClick={goCenter}>
+        <button className="absolute top-0 right-0 z-[3] text-2xl p-2" onClick={goCenter} aria-label="네이버 지도 맵 새로고침 버튼">
           🔄
         </button>
       </div>

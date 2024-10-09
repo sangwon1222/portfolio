@@ -13,6 +13,8 @@
 
   --bg-main: #ffffff;
   --bg-sub: #bdc1c9;
+  font-display: swap;
+  @apply bg-white text-gray-800
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,12 +26,13 @@
 }
 
 
-:root[data-theme="dark"] {
+:root.dark {
   color-scheme: dark;
   --bg-main: #383838;
   --bg-sub: #5a5a5a;
   --color-bg-primary:#383838;
   --color-text-secondary:#fff;
+  @apply  bg-gray-800 text-gray-300
 }
 
 .center-layout{
@@ -45,7 +48,7 @@ img {
 }
 html,body {
   font-family: var(--custom-font);
-  @apply text-[12px] tablet:text-[14px] desktop:text-[16px] min-w-[320px] tracking-tighter
+  @apply min-w-[320px] tracking-tighter
 }
 
 b {
@@ -53,16 +56,16 @@ b {
 }
 
 h1{
-  @apply text-36 font-bold
+  @apply text-4xl font-bold
 }
 h2{
-  @apply text-30 font-bold
+  @apply text-3xl font-bold
 }
 h3{
-  @apply text-24 font-bold
+  @apply text-2xl font-bold
 }
 h4{
-  @apply text-20 font-bold
+  @apply text-xl font-bold
 }
 
 *::-webkit-scrollbar {
@@ -70,7 +73,7 @@ h4{
   height: 8px;
 }
 *::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-600;
+  @apply bg-gray-100 dark:bg-gray-600 ;
 }
 
 *::-webkit-scrollbar-thumb {

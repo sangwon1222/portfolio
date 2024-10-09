@@ -2,19 +2,19 @@ import type { Config } from "tailwindcss";
 import customSpace from "./customSpace";
 
 const config: Config = {
-  darkMode:'class',
+  darkMode: "class",
   content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
-      fontSize: customSpace,
-      margin: customSpace,
-      padding: customSpace,
-      gap: customSpace,
-      height: customSpace,
-      minHeight: customSpace,
-      width: customSpace,
-      minWidth: customSpace,
-      maxWidth: customSpace,
+      // fontSize: customSpace,
+      // margin: customSpace,
+      // padding: customSpace,
+      // gap: customSpace,
+      // height: customSpace,
+      // minHeight: customSpace,
+      // width: customSpace,
+      // minWidth: customSpace,
+      // maxWidth: customSpace,
       screens: {
         tablet: "751px",
         desktop: "1280px",
