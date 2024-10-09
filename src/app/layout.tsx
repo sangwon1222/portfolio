@@ -32,7 +32,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning>
+    <html suppressHydrationWarning lang="ko">
       <body className={`${notoSansKr.className} min-w-[320px]`}>
         <Analytics />
         <SpeedInsights />
