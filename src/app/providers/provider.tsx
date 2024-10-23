@@ -1,7 +1,7 @@
 "use client";
 import RecoilRootProvider from "./recoil/recoilRootProvider";
 import ListMobileProvider from "./listMobile/ListProvider";
-import LoadingProvider from "./loding/LoadingProvider";
+import LoadingProvider from "./loading/LoadingProvider";
 import DarkModeProvider from "./theme/themeProvider";
 import { type ReactNode } from "react";
 

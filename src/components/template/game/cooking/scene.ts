@@ -1,10 +1,11 @@
-import gsap from "gsap";
-import Buns from "./buns";
-import BunsTray from "./bunsTray";
-import PanContainer from "./PanContainer";
-import BunStore from "./bunStore";
-import CustomerManager from "./Customer";
 import DispenserManager from "./dispenser";
+import PanContainer from "./PanContainer";
+import CustomerManager from "./Customer";
+import BunsTray from "./bunsTray";
+import BunStore from "./bunStore";
+import * as Phaser from "phaser";
+import Buns from "./buns";
+import gsap from "gsap";
 
 export default class MainScene extends Phaser.Scene {
   private mBunStore!: BunStore;
@@ -22,8 +23,6 @@ export default class MainScene extends Phaser.Scene {
   get customer(): CustomerManager {
     return this.mCustomer;
   }
-
-  private mPattys!: Array<Patty>;
 
   private mBunsTray!: BunsTray;
   get bunsTray(): BunsTray {
@@ -147,7 +146,10 @@ export default class MainScene extends Phaser.Scene {
       this.sound.play("bgm", { loop: true, volume: 1 });
       this.mDispenserManager.init();
       this.mCustomer.init();
-      this.mCoinText = this.add.text(1280 / 2, 0, this.mCoin.toString(), { fontSize: "32px", backgroundColor: "0x000" });
+      this.mCoinText = this.add.text(1280 / 2, 0, this.mCoin.toString(), {
+        fontSize: "32px",
+        backgroundColor: "0x000",
+      });
     });
 
     this.game.events.emit("loaded");

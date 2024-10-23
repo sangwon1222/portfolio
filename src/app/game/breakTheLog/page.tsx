@@ -1,5 +1,5 @@
-import Loading from "@/components/loading";
 import { Metadata, ResolvingMetadata } from "next";
+import Loading from "@/components/loading";
 import dynamic from "next/dynamic";
 
 export async function generateMetadata(

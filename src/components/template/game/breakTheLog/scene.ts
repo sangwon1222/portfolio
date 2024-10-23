@@ -1,7 +1,9 @@
+import { getRankApi, registerRankApi } from "@/service/breakTheLog/rank";
+import toast from "react-hot-toast";
+import * as Phaser from "phaser";
 import Log from "./log";
 import gsap from "gsap";
-import { getRankApi, registerRankApi } from "./breakTheLog";
-import toast from "react-hot-toast";
+
 export default class MainScene extends Phaser.Scene {
   private mLogList: Array<Log>;
   private mLogContainer!: Phaser.GameObjects.Container;
@@ -15,7 +17,6 @@ export default class MainScene extends Phaser.Scene {
   }
 
   preload() {
-    // this.load.setBaseURL('https://lsw.kr/assets/rsc/breakTheLog');
     this.load.setBaseURL("/assets/rsc/");
 
     this.load.html("input", "input.html");

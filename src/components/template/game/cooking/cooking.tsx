@@ -1,57 +1,15 @@
 "use client";
-import useLoading from "@/app/providers/loding/useLoading";
+import { cookingPhaserConfig } from "@/config/cooking/phaserConfig";
+import useLoading from "@/app/providers/loading/useLoading";
+import { usePhaserGame } from "@/hooks/usePhaserGame";
 import Loading from "@/components/loading";
-import { calcScreen } from "@/util";
-import { useEffect } from "react";
-import * as Phaser from "phaser";
-import MainScene from "./scene";
-import { Game } from "phaser";
-
-const phaserConfig = {
-  parent: "phaser-app",
-  width: 1280,
-  height: 720,
-  type: Phaser.AUTO,
-  transparent: false,
-  dom: { createContainer: true },
-  scale: {
-    mode: Phaser.Scale.NONE,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-  },
-  physics: {
-    default: "arcade",
-    arcade: {
-      debug: false,
-      gravity: { x: 0, y: 0 },
-    },
-  },
-  scene: MainScene,
-};
 
 export default function Cooking() {
   const { isLoading, setLoadingState } = useLoading();
-
+  const handleOnLoading = () => setLoadingState(true);
   const handleLoaded = () => setLoadingState(false);
 
-  useEffect(() => {
-    setLoadingState(true);
-
-    const app = document.getElementById("app");
-    app?.replaceChildren();
-
-    const gameRef = new Game(phaserConfig) as Phaser.Game;
-    gameRef.events.on("loaded", handleLoaded);
-
-    calcScreen(gameRef);
-    const calcCanvas = () => calcScreen(gameRef);
-    window.addEventListener("resize", calcCanvas, true);
-
-    return () => {
-      gameRef.events.off("loaded", handleLoaded);
-      window.removeEventListener("resize", calcCanvas, true);
-      gameRef.destroy(true);
-    };
-  }, []);
+  usePhaserGame(cookingPhaserConfig, handleOnLoading, handleLoaded, true);
 
   return (
     <div className="flex flex-col justify-center w-full h-screen bg-black">
