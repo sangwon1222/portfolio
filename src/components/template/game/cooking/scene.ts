@@ -47,7 +47,7 @@ export default class MainScene extends Phaser.Scene {
 
   constructor() {
     super();
-    this.mCoin = 10000;
+    this.mCoin = 200;
   }
 
   preload() {
