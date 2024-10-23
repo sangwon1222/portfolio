@@ -154,7 +154,7 @@ export class Tray {
     this.mIsEmpty = true;
     this.mImage.destroy(true);
     const coin = this.mIsBun ? 20 : 30;
-    this.mScene.addCoin(coin);
+    this.mScene.setCoin(this.mScene.coin + coin);
     const parent = this.mIsBun ? this.mScene.bunsTray : this.mScene.hotDogBunsTray;
     parent.remove(this.mIdx);
   }

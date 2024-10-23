@@ -15,6 +15,7 @@ export default class MainScene extends Phaser.Scene {
 
   private mCoinText!: Phaser.GameObjects.Text;
   private mCoin: number;
+  private mCoinTimeline: gsap.core.Tween | null = null;
   get coin(): number {
     return this.mCoin;
   }
@@ -46,7 +47,7 @@ export default class MainScene extends Phaser.Scene {
 
   constructor() {
     super();
-    this.mCoin = 0;
+    this.mCoin = 10000;
   }
 
   preload() {
@@ -146,10 +147,13 @@ export default class MainScene extends Phaser.Scene {
       this.sound.play("bgm", { loop: true, volume: 1 });
       this.mDispenserManager.init();
       this.mCustomer.init();
-      this.mCoinText = this.add.text(1280 / 2, 0, this.mCoin.toString(), {
+      this.mCoinText = this.add.text(140, 720 - 40, `수익: ${this.mCoin} 원`, {
         fontSize: "32px",
-        backgroundColor: "0x000",
+        color: "#fff",
+        backgroundColor: "#000",
+        padding: { y: 20 },
       });
+      this.mCoinText.setOrigin(0.5, 0.5);
     });
 
     this.game.events.emit("loaded");
@@ -164,16 +168,24 @@ export default class MainScene extends Phaser.Scene {
     patty.init();
   }
 
-  addCoin(coin: number) {
-    this.sound.play("coin");
-    this.mCoin += coin;
-    this.mCoinText.setText(this.mCoin.toString());
-  }
-
   setCoin(coin: number) {
+    // 기존 코인 애니 kill
+    this.mCoinTimeline?.kill();
+    // 애니 전 상태로 복원
+    this.mCoinText.setScale(1, 1);
+
+    // 코인 사운드
     this.sound.play("coin");
+
+    // 코인 업데이트
     this.mCoin = coin;
-    this.mCoinText.setText(this.mCoin.toString());
+    this.mCoinText.setText(`수익: ${this.mCoin} 원`);
+
+    // 코인 애니 설정
+    this.mCoinTimeline = gsap
+      .to(this.mCoinText, { scale: 1.1, duration: 0.15, onComplete: () => (this.mCoinTimeline = null) })
+      .repeat(3)
+      .yoyo(true);
   }
 }
 

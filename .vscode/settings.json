@@ -11,6 +11,8 @@
     "refreshtoken",
     "swiper",
     "tailwindcss",
-    "VARCHAR"
+    "Tweens",
+    "VARCHAR",
+    "yoyo"
   ]
 }
