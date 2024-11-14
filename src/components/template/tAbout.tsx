@@ -18,8 +18,7 @@ export default function Tabout() {
           </li>
 
           <li>
-            <p>Next.js, Typescript, React, Vue, Pixi 기반 4년차 프론트엔드 개발자 이상원입니다.</p>
-            <p>웹 기반 게임 개발에 관심이 많습니다.</p>
+            <p>4년차 프론트엔드 개발자 이상원입니다.</p>
           </li>
 
           <li>

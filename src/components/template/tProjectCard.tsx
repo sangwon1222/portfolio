@@ -4,10 +4,18 @@ import { map } from "lodash-es";
 import HashTag from "@/components/atoms/hashtag";
 import Link from "next/link";
 
-export default function ProjectCard({ label, hashtagList, projectLink = "" }: { label: string; hashtagList: string[]; projectLink: string }) {
+export default function ProjectCard({
+  label,
+  hashtagList,
+  projectLink = "",
+}: {
+  label: string;
+  hashtagList: string[];
+  projectLink: string;
+}) {
   return (
     <>
-      <div className="flex gap-2">
+      <div className="flex gap-2 ">
         {projectLink ? (
           <Link className="flex items-center gap-2" href={projectLink}>
             <p>
@@ -21,7 +29,7 @@ export default function ProjectCard({ label, hashtagList, projectLink = "" }: { 
           </p>
         )}
       </div>
-      <p className="flex gap-2 pl-5">
+      <p className="flex flex-wrap gap-2">
         {map(hashtagList, (v, i) => (
           <HashTag text={v} key={`${i}th-hashtag-${v}`} />
         ))}
