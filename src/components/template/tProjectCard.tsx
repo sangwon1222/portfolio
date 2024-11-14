@@ -4,15 +4,13 @@ import { map } from "lodash-es";
 import HashTag from "@/components/atoms/hashtag";
 import Link from "next/link";
 
-export default function ProjectCard({
-  label,
-  hashtagList,
-  projectLink = "",
-}: {
+interface PropsType {
   label: string;
   hashtagList: string[];
-  projectLink: string;
-}) {
+  projectLink?: string;
+}
+
+export const ProjectCard: React.FC<PropsType> = ({ label, hashtagList, projectLink = "" }) => {
   return (
     <>
       <div className="flex gap-2 ">
@@ -36,4 +34,4 @@ export default function ProjectCard({
       </p>
     </>
   );
-}
+};

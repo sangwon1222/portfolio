@@ -3,8 +3,9 @@
 import useTheme from "@/app/providers/theme/useTheme";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
-export default function TnotFound() {
+export const NotFoundTemplate: React.FC = () => {
   const { theme } = useTheme();
   return (
     <>
@@ -24,4 +25,4 @@ export default function TnotFound() {
       <p>PAGE NOT FOUND</p>
     </>
   );
-}
+};

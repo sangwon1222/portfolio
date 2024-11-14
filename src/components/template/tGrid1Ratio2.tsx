@@ -1,6 +1,14 @@
 "use client";
 
-export default function Grid1Ratio2({ label, period, href, children }: { label: string; period: string; href: string; children: React.ReactNode }) {
+import React, { PropsWithChildren } from "react";
+
+interface PropsType extends PropsWithChildren {
+  label: string;
+  period: string;
+  href: string;
+}
+
+export const Grid1Ratio2: React.FC<PropsType> = ({ label, period, href, children }) => {
   return (
     <div className="flex flex-col desktop:grid desktop:grid-cols-3 tablet:grid tablet:grid-cols-3 gap-2 border p-2 w-full">
       <ul className="desktop:col-span-1 tablet:col-span-1">
@@ -14,4 +22,4 @@ export default function Grid1Ratio2({ label, period, href, children }: { label: 
       <div className="flex flex-col px-2 gap-2 desktop:col-span-2 tablet:col-span-2">{children}</div>
     </div>
   );
-}
+};

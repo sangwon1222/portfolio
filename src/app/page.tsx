@@ -1,5 +1,5 @@
-import Tabout from "@/components/template/tAbout";
-import Texperience from "@/components/template/tExperience";
+import About from "@/components/template/tAbout";
+import Experience from "@/components/template/tExperience";
 import { Metadata, ResolvingMetadata } from "next";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -25,8 +25,8 @@ export async function generateMetadata(
 export default async function Home({ params, searchParams }: { params: any; searchParams: any }) {
   return (
     <div className="overflow-hidden flex flex-col items-center gap-2 pb-20">
-      <Tabout />
-      <Texperience />
+      <About />
+      <Experience />
     </div>
   );
 }

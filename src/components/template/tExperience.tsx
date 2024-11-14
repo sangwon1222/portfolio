@@ -1,7 +1,7 @@
 "use client";
 
-import Grid1Ratio2 from "./tGrid1Ratio2";
-import ProjectCard from "./tProjectCard";
+import { Grid1Ratio2 } from "./tGrid1Ratio2";
+import { ProjectCard } from "./tProjectCard";
 
 export default function Texperience() {
   return (
