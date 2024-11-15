@@ -13,10 +13,6 @@ const PWAoption = withPWA({
 const nextConfig = {
   reactStrictMode: false,
   trailingSlash: true, // 모든 URL에 슬래시를 추가 (정적 파일 경로와 호환성 확보)
-  output: "export",
-  images: {
-    unoptimized: true, // 이미지 최적화 비활성화
-  },
 
   async headers() {
     return [
