@@ -81,27 +81,6 @@ h4{
 }
 
 
-.swiper-button-next,.swiper-button-prev{
-  @apply overflow-hidden !w-20 !h-20 rounded-full relative  hover:after:w-10 hover:after:h-10;
-}
-.swiper-button-next:after{
-  @apply rotate-45 border-t-[6px] border-r-[6px]
-}
-.swiper-button-prev:after{
-  @apply -rotate-45 border-t-[6px] border-l-[6px]
-}
-.swiper-button-next:after,.swiper-button-prev:after
-{
-  @apply absolute border-white w-8 h-8 rounded !content-[''] duration-150;
-}
-
-.swiper-pagination-mainBanner-bullet{
-  @apply inline-block w-6 h-2 mx-1 bg-white duration-300 shadow-md shadow-gray-400;
-}
-.swiper-pagination-mainBanner-bullet-active{
-  @apply bg-sub-1 w-2;
-}
-
 input,textarea:focus{
   outline: none;
 }

@@ -7,9 +7,10 @@ export default function manifest(): MetadataRoute.Manifest {
     display: "standalone",
     scope: "/",
     start_url: "/",
-    name: "LSW-APP",
-    description: "lsw portfolio",
-    short_name: "LSW-APP",
+    name: "프론트엔드 이상원 | 포트폴리오",
+    description:
+      "프론트엔드 개발자 이상원의 포트폴리오. React, Next.js, TypeScript 등을 활용한 UI/UX 경험을 소개합니다.",
+    short_name: "프론트엔드 이상원 | 포트폴리오",
     icons: [
       {
         src: "/assets/icon-192x192.png",
