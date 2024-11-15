@@ -8,4 +8,11 @@ module.exports = {
   robotsTxtOptions: {
     policies: [{ userAgent: "*", allow: "/" }],
   },
+  additionalPaths: async (config) => [
+    {
+      loc: "/game", // game 페이지 추가
+      changefreq: "weekly",
+      priority: 0.8,
+    },
+  ],
 };

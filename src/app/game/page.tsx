@@ -19,7 +19,7 @@ export const metadata = {
     "이상원",
     "프론트엔드 개발자",
   ],
-  author: "이상원",
+  author: "lsw",
   viewport: "width=device-width, initial-scale=1.0",
   robots: "index, follow",
   openGraph: {
