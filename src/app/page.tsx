@@ -5,7 +5,17 @@ import { Suspense } from "react";
 export const metadata = {
   title: "프론트엔드 이상원 | 포트폴리오",
   description: "프론트엔드 개발자 이상원의 포트폴리오. React, Next.js, TypeScript 등을 활용한 UI/UX 경험을 소개합니다.",
-  keywords: ["프론트엔드 개발자", "이상원 포트폴리오", "React", "Next.js", "TypeScript", "UI/UX", "웹 개발"],
+  keywords: [
+    "lee sang won",
+    "lsw",
+    "프론트엔드 개발자",
+    "이상원 포트폴리오",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "UI/UX",
+    "웹 개발",
+  ],
   openGraph: {
     title: "프론트엔드 이상원 | 포트폴리오",
     description:

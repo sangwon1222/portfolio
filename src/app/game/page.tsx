@@ -7,6 +7,8 @@ export const metadata = {
   description:
     "프론트엔드 개발자 이상원의 게임 프로젝트 페이지. React, Next.js, TypeScript로 제작된 인터랙티브 게임과 관련 기술을 소개합니다.",
   keywords: [
+    "lee sang won",
+    "lsw",
     "게임 개발",
     "프론트엔드 게임",
     "React 게임",
