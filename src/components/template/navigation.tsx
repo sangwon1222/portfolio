@@ -43,7 +43,8 @@ const Navigation: React.FC = memo(() => {
                 placeholder="blur"
                 blurDataURL="/assets/logo-white.png"
                 style={{ width: 100, height: 50 }}
-                priority={false}
+                loading="eager"
+                priority={true}
               />
             </Link>
             <div className="flex items-center h-20">
@@ -68,7 +69,8 @@ const Navigation: React.FC = memo(() => {
                   height={40}
                   className="w-10 h-10"
                   alt="git_icon"
-                  priority={false}
+                  loading="eager"
+                  priority={true}
                 />
               </Link>
             </div>

@@ -85,7 +85,8 @@ export default function InstallPrompt() {
             alt="logo"
             className="aspect-square object-contain"
             fill
-            priority={false}
+            loading="eager"
+            priority={true}
           />
         </div>
         <div className="flex flex-col gap-1">

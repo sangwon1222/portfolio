@@ -17,7 +17,8 @@ export const NotFoundTemplate: React.FC = () => {
           height={50}
           placeholder="blur"
           blurDataURL="/assets/logo-white.png"
-          priority={false}
+          loading="eager"
+          priority={true}
           style={{ width: 100, height: 50 }}
         />
         <h2 className="dark:text-red-400 text-red-800">404</h2>
