@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://lsw.kr
+
+# Sitemaps
+Sitemap: https://lsw.kr/sitemap.xml
