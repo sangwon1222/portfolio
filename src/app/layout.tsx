@@ -1,6 +1,5 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import InstallPrompt from "@/components/pwa/InstallPrompt";
-import Navigation from "@/components/template/Navigation";
 import { Analytics } from "@vercel/analytics/react";
 import { Noto_Sans_KR } from "next/font/google";
 import Loading from "@/components/loading";
@@ -9,6 +8,7 @@ import { Provider } from "./providers/provider";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import "./globals.css";
+import Navigation from "@/components/template/Navigation";
 
 const notoSansKr = Noto_Sans_KR({
   subsets: ["latin"],

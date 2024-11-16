@@ -27,7 +27,7 @@ export async function generateMetadata(
   };
 }
 
-const BreakTheLogGame = dynamic(() => import("@/components/template/game/BreakTheLog/BreakTheLog"), {
+const BreakTheLogGame = dynamic(() => import("@/components/template/game/breakTheLog/BreakTheLog"), {
   ssr: false,
   loading: () => <Loading />,
 });
