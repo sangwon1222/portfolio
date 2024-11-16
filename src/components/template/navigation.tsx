@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import ListBtn from "@/components/atoms/aListBtn";
-import DarkBtn from "@/components/atoms/aDarkBtn";
+import DarkBtn from "@/components/atoms/DarkBtn";
 import useTheme from "@/app/providers/theme/useTheme";
 import useListMobile from "@/app/providers/listMobile/useListMobile";
 import { memo } from "react";

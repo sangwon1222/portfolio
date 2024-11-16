@@ -35,8 +35,8 @@ export const metadata = {
   },
 };
 
-const About = dynamic(() => import("@/components/template/tAbout"));
-const Experience = dynamic(() => import("@/components/template/tExperience"));
+const About = dynamic(() => import("@/components/template/About"));
+const Experience = dynamic(() => import("@/components/template/Experience"));
 
 export default async function Home({ params, searchParams }: { params: any; searchParams: any }) {
   return (

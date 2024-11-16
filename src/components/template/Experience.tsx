@@ -1,9 +1,9 @@
 "use client";
 
-import { Grid1Ratio2 } from "./tGrid1Ratio2";
-import { ProjectCard } from "./tProjectCard";
+import { ProjectCard } from "./ProjectCard";
+import { Grid1Ratio2 } from "./Grid1Ratio2";
 
-export default function Texperience() {
+export default function Experience() {
   return (
     <>
       <div id="experience" className="h-20" />

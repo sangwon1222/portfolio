@@ -1,6 +1,6 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import InstallPrompt from "@/components/pwa/InstallPrompt";
-import Navigation from "@/components/template/navigation";
+import Navigation from "@/components/template/Navigation";
 import { Analytics } from "@vercel/analytics/react";
 import { Noto_Sans_KR } from "next/font/google";
 import Loading from "@/components/loading";

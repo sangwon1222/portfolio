@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { NotFoundTemplate } from "@/components/template/tNotFound";
+import { NotFoundTemplate } from "@/components/template/NotFoundTemplate";
 
 export const metadata: Metadata = {
   title: "LSW-APP|404",
