@@ -4,13 +4,13 @@ importScripts("https://www.gstatic.com/firebasejs/9.14.0/firebase-messaging-comp
 
 // FIRE-BASE 앱 등록할때 받은 'firebaseConfig' 값을 넣어주세요.
 const config = {
-  apiKey: "AIzaSyDDDxWxe9pKzcrM-gbXttZho2uUZbgkIj4",
-  authDomain: "think-tag-app.firebaseapp.com",
-  projectId: "think-tag-app",
-  storageBucket: "think-tag-app.appspot.com",
-  messagingSenderId: "1019901849670",
-  appId: "1:1019901849670:web:660db75f384d0a63bf1a47",
-  measurementId: "G-52M7CDXLVC",
+  apiKey: "AIzaSyCswEVuOYh0XSYH7gTX20AZ2cY-g6qBmX0",
+  authDomain: "lsw-portfolio.firebaseapp.com",
+  projectId: "lsw-portfolio",
+  storageBucket: "lsw-portfolio.firebasestorage.app",
+  messagingSenderId: "977425089024",
+  appId: "1:977425089024:web:63450b586220c8abb94ee5",
+  measurementId: "G-KRPLHM3RN1",
 };
 
 // Initialize Firebase

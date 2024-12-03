@@ -1,5 +1,5 @@
-import admin, { ServiceAccount } from "firebase-admin";
-import { NextRequest, NextResponse } from "next/server";
+import admin, { ServiceAccount } from 'firebase-admin';
+import { NextRequest, NextResponse } from 'next/server';
 
 // api 호출할 때 함께 전달할 데이터
 interface INotificationData {
@@ -33,7 +33,7 @@ const sendFCMNotification = async (data: INotificationData, fcmTokenList: string
     if (!admin.apps.length) {
       const serviceAccount: ServiceAccount = {
         projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
-        privateKey: process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY?.replaceAll("\\n", "\n"),
+        privateKey: process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY?.replaceAll('\\n', '\n'),
         clientEmail: process.env.NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL,
       };
 
@@ -47,7 +47,10 @@ const sendFCMNotification = async (data: INotificationData, fcmTokenList: string
     // 푸시 알림 전송
     const response = await admin.messaging().sendEach(notificationDataList);
     const ok = fcmTokenList.length == response.successCount;
-    return { ok, msg: ok ? "전송 성공" : `${fcmTokenList.length}중 ${response.successCount}개 전송 성공` };
+    return {
+      ok,
+      msg: ok ? '전송 성공' : `${fcmTokenList.length}중 ${response.successCount}개 전송 성공`,
+    };
   } catch (e: any) {
     return { ok: false, msg: e };
   }

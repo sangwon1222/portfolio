@@ -1,4 +1,4 @@
-import MainScene from "@/components/template/game/cooking/scene";
+import MainScene from "@templates/game/cooking/scene";
 import * as Phaser from "phaser";
 
 export const cookingPhaserConfig = {

@@ -2,19 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'GmarketSans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/assets/fonts/GmarketSansTTFLight.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GmarketSans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/GmarketSansTTFMedium.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GmarketSans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/assets/fonts/GmarketSansTTFBold.ttf') format('truetype');
+  font-display: swap;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
   color-scheme: light;
-  --color-bg-primary:#fff;
+  --color-bg-primary: #fff;
   --color-text-secondary: #bcbcbc;
 
   --bg-main: #ffffff;
   --bg-sub: #bdc1c9;
-  font-display: swap;
-  @apply bg-white text-gray-800
+  @apply bg-white text-gray-800;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,18 +48,17 @@
   }
 }
 
-
 :root.dark {
   color-scheme: dark;
   --bg-main: #383838;
   --bg-sub: #5a5a5a;
-  --color-bg-primary:#383838;
-  --color-text-secondary:#fff;
-  @apply  bg-gray-800 text-gray-300
+  --color-bg-primary: #383838;
+  --color-text-secondary: #fff;
+  @apply bg-gray-800 text-gray-300;
 }
 
-.center-layout{
-  @apply flex justify-center items-center
+.center-layout {
+  @apply flex justify-center items-center;
 }
 img {
   user-drag: none;
@@ -46,26 +68,28 @@ img {
   -webkit-user-select: none;
   -ms-user-select: none;
 }
-html,body {
-  font-family: var(--custom-font);
-  @apply min-w-[320px] tracking-tighter
+html,
+body {
+  font-family: 'GmarketSans', sans-serif;
+  font-weight: 300;
+  @apply min-w-[320px] tracking-tighter;
 }
 
 b {
   @apply font-black;
 }
 
-h1{
-  @apply text-4xl font-bold
+h1 {
+  @apply text-4xl font-bold;
 }
-h2{
-  @apply text-3xl font-bold
+h2 {
+  @apply text-3xl font-bold;
 }
-h3{
-  @apply text-2xl font-bold
+h3 {
+  @apply text-2xl font-bold;
 }
-h4{
-  @apply text-xl font-bold
+h4 {
+  @apply text-xl font-bold;
 }
 
 *::-webkit-scrollbar {
@@ -73,71 +97,23 @@ h4{
   height: 8px;
 }
 *::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-600 ;
+  @apply bg-gray-100 dark:bg-gray-600;
 }
 
 *::-webkit-scrollbar-thumb {
   @apply bg-gray-600 dark:bg-gray-100 rounded-full;
 }
 
-
-input,textarea:focus{
+input,
+textarea:focus {
   outline: none;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-/* 파이어폭스에서의 초기화 방법 */
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-input[type='checkbox'] {
-  @apply bg-white border-main-2 border;
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 4px;
-  cursor: pointer;
-  height: 13px;
-  outline: 0;
-  width: 13px;
-  border-radius: 0px;
-  position: relative;
-}
-input[type='checkbox']::before {
-  content: '';
-  opacity: 0.3;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-}
-
-input[type='checkbox']::after {
-  @apply border-main-2;
-  border-width: 0 2px 2px 0;
-  content: '';
-  display: none;
-  height: 40%;
-  left: 40%;
-  position: relative;
-  top: 20%;
-  transform: rotate(45deg);
-  width: 15%;
-}
-input[type='checkbox']:checked {
-  @apply bg-main-2;
-  border: none;
-}
-input[type='checkbox']:checked::after {
-  display: block;
 }
 
 @layer utilities {

@@ -1,4 +1,4 @@
-import MainScene from "@/components/template/game/breakTheLog/scene";
+import MainScene from "@templates/game/breakTheLog/scene";
 import * as Phaser from "phaser";
 
 export const breakTheLogPhaserConfig = {

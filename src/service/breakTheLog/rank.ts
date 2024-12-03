@@ -3,7 +3,7 @@ async function apiRequest(url: string, options: RequestInit): Promise<any> {
     const response = await fetch(url, {
       ...options,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
 
@@ -18,10 +18,10 @@ async function apiRequest(url: string, options: RequestInit): Promise<any> {
   }
 }
 
-export const getRankApi = () => apiRequest("/api/rank/breakTheLog", { method: "GET" });
+export const getRankApi = () => apiRequest('/api/rank/breakTheLog', { method: 'GET' });
 
 export const registerRankApi = (gamename: string, nickname: string, score: number) =>
-  apiRequest("/api/rank", {
-    method: "POST",
+  apiRequest('/api/rank', {
+    method: 'POST',
     body: JSON.stringify({ gamename, nickname, score }),
   });

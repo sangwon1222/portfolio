@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 export const metadata: Metadata = {
-  title: "LSW|ERROR",
-  description: "LSW ERROR PAGE",
+  title: 'LSW|ERROR',
+  description: 'LSW ERROR PAGE',
 };
 
 export default function ErrorPage({

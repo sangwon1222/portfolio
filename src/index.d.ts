@@ -8,10 +8,10 @@ type LoadingContextType = {
   setLoadingState: (v: boolean) => void;
 };
 
-declare type ThemeType = "light" | "dark";
+declare type ThemeType = 'light' | 'dark';
 
 declare type ThemeContextType = {
-  theme: "light" | "dark";
+  theme: 'light' | 'dark';
   toggleTheme: () => void;
 };
 
@@ -33,9 +33,15 @@ declare type TypeSignUpFormData = {
   emailCode: string;
 };
 
-declare type TypeFormKeyData = "id" | "name" | "password" | "passwordRetype" | "email" | "emailCode";
+declare type TypeFormKeyData =
+  | 'id'
+  | 'name'
+  | 'password'
+  | 'passwordRetype'
+  | 'email'
+  | 'emailCode';
 
-declare type TypeFaqTitle = "total" | "RFIDHardware" | "beacon" | "solution";
+declare type TypeFaqTitle = 'total' | 'RFIDHardware' | 'beacon' | 'solution';
 
 declare interface IFaqNavProps {
   changeTitle: (text: TypeFaqTitle) => void;
@@ -82,53 +88,6 @@ declare interface ILabelInputProps {
 
 declare interface ILineTextProps {
   text: string;
-  linePos: "up" | "under";
+  linePos: 'up' | 'under';
   customCss?: string | undefined;
-}
-
-declare interface IGuideProps {
-  img: string;
-  imgPos: "left" | "right";
-  title: string;
-  contents: string;
-  detail: string;
-}
-
-declare type TypeFaqBoard = {
-  board_no: number;
-  board_type: string;
-  title: string;
-  question: string;
-  answer: string;
-  user_id: string;
-  created_time: string;
-  updated_time: string;
-};
-
-declare interface IBoardProps {
-  title: string;
-  data: TypeFaqBoard;
-  showAnswer: (target: HTMLDivElement | null) => void;
-}
-
-declare interface IBoardListProps {
-  title: string;
-  data: TypeFaqBoard[] | [] | null;
-  showAnswer: (target: HTMLDivElement | null) => void;
-}
-
-declare interface IEditMailProps {
-  email: string;
-  setEmail: () => void;
-  sendEmail: () => void;
-  resetCode: () => void;
-}
-
-declare interface IContactMailFormProps {
-  companyName: string;
-  position: string;
-  name: string;
-  email: string;
-  phone: string;
-  how: string;
 }

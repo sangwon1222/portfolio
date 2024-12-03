@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+     "baseUrl": "./src",
     "lib": [
       "dom",
       "dom.iterable",
@@ -22,9 +23,12 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./*"],
+      "@atoms/*": ["./components/atoms/*"],
+      "@molecules/*": ["./components/molecules/*"],
+      "@organisms/*": ["./components/organisms/*"],
+      "@templates/*": ["./components/templates/*"],
+      "@app/*": ["./app/*"],
     }
   },
   "include": [
