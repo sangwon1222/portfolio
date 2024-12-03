@@ -1,15 +1,15 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import ListBtn from "@atoms/ListBtn";
-import ThemeBtn from "@molecules/ThemeBtn";
-import useTheme from "@/app/providers/theme/useTheme";
-import useListMobile from "@/app/providers/listMobile/useListMobile";
-import { memo } from "react";
-import { NAV_LIST } from "@/constants/nav";
-import { GitBtn } from "@molecules/GitBtn";
-import { LocaleBtn } from "@molecules/LocaleBtn";
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import ListBtn from '@atoms/ListBtn';
+import ThemeBtn from '@molecules/ThemeBtn';
+import useTheme from '@/app/providers/theme/useTheme';
+import useListMobile from '@/app/providers/listMobile/useListMobile';
+import { memo } from 'react';
+import { NAV_LIST } from '@/constants/nav';
+import { GitBtn } from '@molecules/GitBtn';
+import { LocaleBtn } from '@molecules/LocaleBtn';
 
 const Navigation: React.FC = memo(() => {
   const router = useRouter();
@@ -22,7 +22,7 @@ const Navigation: React.FC = memo(() => {
   };
 
   const pathname = usePathname();
-  const hasNotNavigation = pathname.split("/").length > 3 && pathname.includes("/game/");
+  const hasNotNavigation = pathname.split('/').length > 3 && pathname.includes('/game/');
   if (hasNotNavigation) return null;
 
   return (
@@ -33,7 +33,7 @@ const Navigation: React.FC = memo(() => {
 
           <Link href="/">
             <Image
-              src={theme === "dark" ? "/assets/logo-white.png" : "/assets/logo-color.png"}
+              src={theme === 'dark' ? '/assets/logo-white.png' : '/assets/logo-color.png'}
               alt="logo"
               width={100}
               height={50}
@@ -68,7 +68,7 @@ const Navigation: React.FC = memo(() => {
 
         {/* MOBILE NAV */}
         <div
-          className={`desktop:hidden tablet:hidden ${open ? "flex" : "hidden"} flex-col w-full h-screen dark:bg-gray-800 bg-gray-200 text-base`}
+          className={`desktop:hidden tablet:hidden ${open ? 'flex' : 'hidden'} flex-col w-full h-screen dark:bg-gray-800 bg-gray-200 text-base`}
         >
           {NAV_LIST.map(({ label, href }, i) => (
             <button
@@ -86,6 +86,6 @@ const Navigation: React.FC = memo(() => {
   );
 });
 
-Navigation.displayName = "Navigation";
+Navigation.displayName = 'Navigation';
 
 export default Navigation;
