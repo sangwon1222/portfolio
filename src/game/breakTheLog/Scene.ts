@@ -240,7 +240,7 @@ export default class MainScene extends Phaser.Scene {
     dimmed?.setVisible(true);
 
     this.nameInput = this.add
-      .dom(CENTER_X, CENTER_Y - 100)
+      .dom(window.innerWidth / 2, window.innerHeight / 4)
       .createFromCache('input')
       .setDepth(4);
     const nameInputElement = this.nameInput.getChildByName('name') as HTMLInputElement;
