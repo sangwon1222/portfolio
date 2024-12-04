@@ -1,16 +1,16 @@
 // /public/firebase-messaging-sw.js
-importScripts("https://www.gstatic.com/firebasejs/9.14.0/firebase-app-compat.js");
-importScripts("https://www.gstatic.com/firebasejs/9.14.0/firebase-messaging-compat.js");
+importScripts('https://www.gstatic.com/firebasejs/9.14.0/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/9.14.0/firebase-messaging-compat.js');
 
 // FIRE-BASE 앱 등록할때 받은 'firebaseConfig' 값을 넣어주세요.
 const config = {
-  apiKey: "AIzaSyCswEVuOYh0XSYH7gTX20AZ2cY-g6qBmX0",
-  authDomain: "lsw-portfolio.firebaseapp.com",
-  projectId: "lsw-portfolio",
-  storageBucket: "lsw-portfolio.firebasestorage.app",
-  messagingSenderId: "977425089024",
-  appId: "1:977425089024:web:63450b586220c8abb94ee5",
-  measurementId: "G-KRPLHM3RN1",
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
@@ -23,19 +23,27 @@ firebase.initializeApp(config);
 //   self.registration.showNotification(title, { body, icon: image, image, click_action });
 // });
 
-self.addEventListener("push", function (event) {
+self.addEventListener('push', function (event) {
   if (event.data) {
     // 알림 메세지일 경우엔 event.data.json().notification;
     const { title, body, image, icon, badge, click_action } = event.data.json().data;
-    event.waitUntil(self.registration.showNotification(title, { body, badge, icon, image, data: { click_action } }));
+    event.waitUntil(
+      self.registration.showNotification(title, {
+        body,
+        badge,
+        icon,
+        image,
+        data: { click_action },
+      })
+    );
   } else {
-    console.log("This push event has no data.");
+    console.log('This push event has no data.');
   }
 });
 
 // 클릭 이벤트 처리
 // 알림을 클릭하면 사이트로 이동한다.
-self.addEventListener("notificationclick", function (event) {
+self.addEventListener('notificationclick', function (event) {
   event.preventDefault();
   // 알림창 닫기
   event.notification.close();
@@ -48,7 +56,7 @@ self.addEventListener("notificationclick", function (event) {
   // 클라이언트에 해당 사이트가 열려있는지 체크
   const promiseChain = clients
     .matchAll({
-      type: "window",
+      type: 'window',
       includeUncontrolled: true,
     })
     .then(function (windowClients) {
