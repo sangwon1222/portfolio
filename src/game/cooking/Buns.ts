@@ -1,15 +1,15 @@
-import MainScene from "./scene";
+import MainScene from './Scene';
 
 export default class Buns {
   private mScene: MainScene;
   private mSprite: Phaser.GameObjects.Image;
   private mIsBun: boolean;
   constructor(scene: MainScene, x: number, y: number, img: string) {
-    this.mIsBun = img == "buns";
+    this.mIsBun = img == 'buns';
     this.mScene = scene;
     this.mSprite = scene.add.image(x, y, img);
-    this.mSprite.setInteractive({ cursor: "pointer" });
-    this.mSprite.on("pointerdown", async () => {
+    this.mSprite.setInteractive({ cursor: 'pointer' });
+    this.mSprite.on('pointerdown', async () => {
       await this.addBun();
     });
   }

@@ -1,4 +1,4 @@
-import * as Phaser from "phaser";
+import * as Phaser from 'phaser';
 
 export default class Log extends Phaser.GameObjects.Sprite {
   private mKey: string;
@@ -13,7 +13,7 @@ export default class Log extends Phaser.GameObjects.Sprite {
     super(scene, x, y, key);
     this.mKey = key;
 
-    const keyList = ["tree", "tree-left", "tree-right"];
+    const keyList = ['tree', 'tree-left', 'tree-right'];
     this.mStatus = keyList.indexOf(key);
   }
 

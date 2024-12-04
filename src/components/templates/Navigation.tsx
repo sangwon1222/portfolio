@@ -22,7 +22,7 @@ const Navigation: React.FC = memo(() => {
   };
 
   const pathname = usePathname();
-  const hasNotNavigation = pathname.split('/').length > 3 && pathname.includes('/game/');
+  const hasNotNavigation = pathname.split('/').length > 4 && pathname.includes('/game/');
   if (hasNotNavigation) return null;
 
   return (

@@ -12,9 +12,9 @@ export const calcScreen = (game: Phaser.Game | null = null) => {
 
   if (WINDOW_RATIO < CANVAS_RATIO) {
     canvas.style.width = width < 320 ? '320px' : width + 'px';
-    canvas.style.height = width < 320 ? '180px' : width / CANVAS_RATIO + 'px';
+    canvas.style.height = width < 320 ? '180px' : Math.floor(width / CANVAS_RATIO) + 'px';
   } else {
-    canvas.style.width = height * CANVAS_RATIO + 'px';
+    canvas.style.width = Math.floor(height * CANVAS_RATIO) + 'px';
     canvas.style.height = height + 'px';
   }
 };

@@ -47,13 +47,7 @@ export const metadata = {
   },
 };
 
-export default async function GamePage({
-  params,
-  searchParams,
-}: {
-  params: any;
-  searchParams: any;
-}) {
+export default async function GamePage() {
   const schemaData = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -94,8 +88,10 @@ export default async function GamePage({
               />
             </div>
             <p className="w-full text-center">{label}</p>
+
             <Link
               href={href}
+              prefetch={false}
               className="center-layout w-full h-11 rounded bg-red-400 dark:bg-red-900"
             >
               GO

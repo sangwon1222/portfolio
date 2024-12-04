@@ -1,10 +1,11 @@
-import MainScene from "@templates/game/breakTheLog/scene";
-import * as Phaser from "phaser";
+import { CANVAS_HEIGHT, CANVAS_WIDTH } from '@/constants/canvas';
+import MainScene from '@game/breakTheLog/Scene';
+import * as Phaser from 'phaser';
 
 export const breakTheLogPhaserConfig = {
-  parent: "phaser-app",
-  width: 1280,
-  height: 720,
+  parent: 'phaser-app',
+  width: CANVAS_WIDTH,
+  height: CANVAS_HEIGHT,
   type: Phaser.AUTO,
   transparent: false,
   dom: { createContainer: true },
@@ -13,7 +14,7 @@ export const breakTheLogPhaserConfig = {
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
   physics: {
-    default: "arcade",
+    default: 'arcade',
     arcade: {
       debug: false,
       gravity: { x: 0, y: 0 },

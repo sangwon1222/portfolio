@@ -1,5 +1,5 @@
 import { Metadata, ResolvingMetadata } from 'next';
-import Loading from '@/components/loading';
+import Loading from '@/components/Loading';
 import dynamic from 'next/dynamic';
 
 export async function generateMetadata(
@@ -27,16 +27,10 @@ export async function generateMetadata(
   };
 }
 
-const BreakTheLogGame = dynamic(() => import('@templates/game/breakTheLog/BreakTheLog'), {
+const BreakTheLogGame = dynamic(() => import('@/components/templates/BreakTheLog'), {
   ssr: false,
   loading: () => <Loading />,
 });
-export default async function BreakTheLogLayout({
-  params,
-  searchParams,
-}: {
-  params: any;
-  searchParams: any;
-}) {
+export default async function BreakTheLogLayout() {
   return <BreakTheLogGame />;
 }

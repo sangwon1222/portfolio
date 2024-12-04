@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
-     "baseUrl": "./src",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "baseUrl": "./src",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -28,7 +24,8 @@
       "@molecules/*": ["./components/molecules/*"],
       "@organisms/*": ["./components/organisms/*"],
       "@templates/*": ["./components/templates/*"],
-      "@app/*": ["./app/*"],
+      "@game/*": ["./game/*"],
+      "@app/*": ["./app/*"]
     }
   },
   "include": [
@@ -36,11 +33,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "build/types/**/*.ts"
-, "src/worker/index.js",
- "src/index.d.ts"
-, "next-sitemap.config.js"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "build/types/**/*.ts",
+    "src/worker/index.js",
+    "src/index.d.ts",
+    "next-sitemap.config.js"
+  ],
+  "exclude": ["node_modules"]
 }

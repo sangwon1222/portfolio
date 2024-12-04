@@ -1,14 +1,11 @@
+import type { Metadata } from 'next';
+import '@/app/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import InstallPrompt from '@templates/pwa/InstallPrompt';
 import { Analytics } from '@vercel/analytics/react';
-import { Noto_Sans_KR } from 'next/font/google';
-import Loading from '@/components/loading';
 import { Toaster } from 'react-hot-toast';
 import { Provider } from '@app/providers/provider';
-import type { Metadata } from 'next';
-import { Suspense } from 'react';
-import '@/app/globals.css';
-import Navigation from '@templates/Navigation';
+import ClientLayout from '@/components/pages/ClientLayout';
 
 export const metadata: Metadata = {
   title: 'LSW',
@@ -33,19 +30,11 @@ export default async function RootLayout({
       <body className="min-w-[320px]">
         <Analytics />
         <SpeedInsights />
-
         <Toaster />
         <InstallPrompt />
 
         <Provider locale={locale}>
-          <Suspense fallback={<Loading />}>
-            <div>
-              <Navigation />
-              <main className="min-w-[320px] w-full h-full overflow-hidden duration-300">
-                <div className="relative w-full h-full m-auto">{children}</div>
-              </main>
-            </div>
-          </Suspense>
+          <ClientLayout>{children}</ClientLayout>
         </Provider>
       </body>
     </html>

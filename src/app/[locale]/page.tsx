@@ -1,4 +1,4 @@
-import Loading from '@/components/loading';
+import Loading from '@/components/Loading';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
@@ -36,7 +36,7 @@ export const metadata = {
   },
 };
 
-const About = dynamic(() => import('@templates/About'));
+const About = dynamic(() => import('@/components/templates/About'));
 const Experience = dynamic(() => import('@templates/Experience'));
 
 export default async function Home({ params, searchParams }: { params: any; searchParams: any }) {
@@ -44,9 +44,6 @@ export default async function Home({ params, searchParams }: { params: any; sear
     <div className="overflow-hidden flex flex-col items-center gap-2 pb-20">
       <Suspense fallback={<Loading />}>
         <About />
-      </Suspense>
-
-      <Suspense fallback={<Loading />}>
         <Experience />
       </Suspense>
     </div>

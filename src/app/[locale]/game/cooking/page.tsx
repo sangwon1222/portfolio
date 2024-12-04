@@ -1,4 +1,4 @@
-import Loading from '@/components/loading';
+import Loading from '@/components/Loading';
 import { Metadata, ResolvingMetadata } from 'next';
 import dynamic from 'next/dynamic';
 
@@ -26,16 +26,10 @@ export async function generateMetadata(
   };
 }
 
-const CookingGame = dynamic(() => import('@templates/game/cooking/cooking'), {
+const CookingGame = dynamic(() => import('@/components/templates/Cooking'), {
   ssr: false,
   loading: () => <Loading />,
 });
-export default async function CookingLayout({
-  params,
-  searchParams,
-}: {
-  params: any;
-  searchParams: any;
-}) {
+export default async function CookingLayout() {
   return <CookingGame />;
 }

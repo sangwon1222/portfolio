@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import MainScene from "./scene";
+import MainScene from "./Scene";
 import { find, map } from "lodash-es";
 
 export default class CustomerManager {

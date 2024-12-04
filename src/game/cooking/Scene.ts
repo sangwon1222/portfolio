@@ -1,11 +1,12 @@
-import DispenserManager from "./dispenser";
-import PanContainer from "./PanContainer";
-import CustomerManager from "./Customer";
-import BunsTray from "./bunsTray";
-import BunStore from "./bunStore";
-import * as Phaser from "phaser";
-import Buns from "./buns";
-import gsap from "gsap";
+import DispenserManager from './Dispenser';
+import PanContainer from './PanContainer';
+import CustomerManager from './Customer';
+import BunsTray from './BunsTray';
+import BunStore from './BunStore';
+import * as Phaser from 'phaser';
+import Buns from './Buns';
+import gsap from 'gsap';
+import { COOKING_RESOURCE_LIST } from '@/constants/cooking';
 
 export default class MainScene extends Phaser.Scene {
   private mBunStore!: BunStore;
@@ -51,64 +52,24 @@ export default class MainScene extends Phaser.Scene {
   }
 
   preload() {
-    // this.load.setBaseURL('https://lsw.kr/assets/rsc/cooking');
-    this.load.setBaseURL("/assets/rsc/");
+    this.load.setBaseURL('/assets/rsc/');
 
-    this.load.image("touch-guide", "common/image/touch-guide.png");
-    this.load.image("mute", "common/image/mute.png");
-    this.load.image("unmute", "common/image/unmute.png");
-    this.load.image("playBtn", "common/image/play.png");
-    this.load.image("bg", "cooking/image/bg.png");
-    this.load.image("buns", "cooking/image/buns.png");
-    this.load.image("bun", "cooking/image/bun.png");
-    this.load.image("bun-patty", "cooking/image/bun-patty.png");
-    this.load.image("hotdog", "cooking/image/hotdog.png");
-    this.load.image("hotdog-bun", "cooking/image/hotdog-bun.png");
-    this.load.image("hotdog-buns", "cooking/image/hotdog-buns.png");
-    this.load.image("buns-ketchup", "cooking/image/buns-ketchup.png");
-    this.load.image("ketchup", "cooking/image/ketchup.png");
-    this.load.image("buns-mustard", "cooking/image/buns-mustard.png");
-    this.load.image("mustard", "cooking/image/mustard.png");
-    this.load.image("grille", "cooking/image/grille.png");
-    this.load.image("pan", "cooking/image/pan.png");
-    this.load.image("trash-cans", "cooking/image/trash-cans.png");
-    this.load.image("patty", "cooking/image/patty.png");
-    this.load.image("patty-rare", "cooking/image/patty-rare.png");
-    this.load.image("patty-burnt", "cooking/image/patty-burnt.png");
-    this.load.image("sausage", "cooking/image/sausage.png");
-    this.load.image("sausage-rare", "cooking/image/sausage-rare.png");
-    this.load.image("sausage-burnt", "cooking/image/sausage-burnt.png");
-    this.load.image("tomato", "cooking/image/tomato.png");
-    this.load.image("lettuce", "cooking/image/lettuce.png");
-    this.load.image("tray", "cooking/image/tray.png");
-    this.load.image("buns-tray", "cooking/image/buns-tray.png");
-    this.load.image("buns-up", "cooking/image/buns-up.png");
-    this.load.image("buns-down", "cooking/image/buns-down.png");
-    this.load.image("dispenser", "cooking/image/dispenser.png");
-    this.load.image("drink", "cooking/image/drink.png");
-    this.load.image("guest-menu", "cooking/image/guest-menu.png");
-    this.load.image("customer-in", "cooking/image/customer-in.png");
-    this.load.image("customer", "cooking/image/customer.png");
-    this.load.image("customer-wait", "cooking/image/customer-wait.png");
+    COOKING_RESOURCE_LIST.image.forEach(([name, path]) => this.load.image(name, path));
 
-    this.load.audio("bgm", "cooking/sound/bgm.mp3");
-    this.load.audio("coin", "cooking/sound/coin.mp3");
-    this.load.audio("sizzle", "cooking/sound/sizzle.mp3");
-    this.load.audio("squeeze", "cooking/sound/squeeze.mp3");
-    this.load.audio("rustle", "cooking/sound/rustle.mp3");
+    COOKING_RESOURCE_LIST.audio.forEach(([name, path]) => this.load.audio(name, path));
   }
 
   async create() {
-    this.add.image(1280 / 2, 720 / 2, "bg");
+    this.add.image(1280 / 2, 720 / 2, 'bg');
 
-    const mute = this.add.image(1280 - 150 / 2, 150 / 2, "unmute").setScale(0.5, 0.5);
-    mute.setInteractive({ cursor: "pointer" });
-    mute.on("pointerdown", () => {
-      mute.setTexture(this.sound.mute ? "unmute" : "mute");
+    const mute = this.add.image(1280 - 150 / 2, 150 / 2, 'unmute').setScale(0.5, 0.5);
+    mute.setInteractive({ cursor: 'pointer' });
+    mute.on('pointerdown', () => {
+      mute.setTexture(this.sound.mute ? 'unmute' : 'mute');
       this.sound.mute = !this.sound.mute;
     });
 
-    this.add.image(1210, 640, "trash-cans");
+    this.add.image(1210, 640, 'trash-cans');
 
     this.mBunsTray = new BunsTray(this, 504, 520, 1, true);
     await this.mBunsTray.init();
@@ -116,8 +77,8 @@ export default class MainScene extends Phaser.Scene {
     this.mHotDogBunsTray = new BunsTray(this, 624, 520, 1, false);
     await this.mHotDogBunsTray.init();
 
-    new Buns(this, 516, 640, "buns");
-    new Buns(this, 516 + 120, 640, "hotdog-buns");
+    new Buns(this, 516, 640, 'buns');
+    new Buns(this, 516 + 120, 640, 'hotdog-buns');
 
     this.mPanList = new PanContainer(this, 984, 520, 1, true);
     await this.mPanList.init();
@@ -131,36 +92,36 @@ export default class MainScene extends Phaser.Scene {
 
     this.mCustomer = new CustomerManager(this);
 
-    const graphic = this.add.graphics().setDepth(9).setName("dimmed");
+    const graphic = this.add.graphics().setDepth(9).setName('dimmed');
     graphic.fillStyle(0x000000, 0.6);
     graphic.fillRect(0, 0, 1280, 720);
     graphic.setActive(true);
-    const playBtn = this.add.sprite(1280 / 2, 720 / 2, "playBtn").setDepth(10);
+    const playBtn = this.add.sprite(1280 / 2, 720 / 2, 'playBtn').setDepth(10);
 
-    this.input.setDefaultCursor("pointer");
+    this.input.setDefaultCursor('pointer');
 
-    this.input.on("pointerdown", () => {
-      this.input.off("pointerdown");
-      this.input.setDefaultCursor("");
+    this.input.on('pointerdown', () => {
+      this.input.off('pointerdown');
+      this.input.setDefaultCursor('');
       graphic.destroy();
       playBtn.destroy();
-      this.sound.play("bgm", { loop: true, volume: 1 });
+      this.sound.play('bgm', { loop: true, volume: 1 });
       this.mDispenserManager.init();
       this.mCustomer.init();
       this.mCoinText = this.add.text(140, 720 - 40, `수익: ${this.mCoin} 원`, {
-        fontSize: "32px",
-        color: "#fff",
-        backgroundColor: "#000",
+        fontSize: '32px',
+        color: '#fff',
+        backgroundColor: '#000',
         padding: { y: 20 },
       });
       this.mCoinText.setOrigin(0.5, 0.5);
     });
 
-    this.game.events.emit("loaded");
+    this.game.events.emit('loaded');
   }
 
   update() {
-    if (window.location.pathname !== "/game/cooking/") this.game.destroy(true);
+    //
   }
 
   addPatty(idx: number, isBun: boolean, x: number, y: number) {
@@ -175,7 +136,7 @@ export default class MainScene extends Phaser.Scene {
     this.mCoinText.setScale(1, 1);
 
     // 코인 사운드
-    this.sound.play("coin");
+    this.sound.play('coin');
 
     // 코인 업데이트
     this.mCoin = coin;
@@ -183,7 +144,11 @@ export default class MainScene extends Phaser.Scene {
 
     // 코인 애니 설정
     this.mCoinTimeline = gsap
-      .to(this.mCoinText, { scale: 1.1, duration: 0.15, onComplete: () => (this.mCoinTimeline = null) })
+      .to(this.mCoinText, {
+        scale: 1.1,
+        duration: 0.15,
+        onComplete: () => (this.mCoinTimeline = null),
+      })
       .repeat(3)
       .yoyo(true);
   }
@@ -218,7 +183,7 @@ export class Patty {
     this.mScene = scene;
     this.mIdx = idx;
     this.mIsBun = isBun;
-    this.mImage = scene.add.image(x, y, isBun ? "patty-rare" : "sausage-rare").setDepth(3);
+    this.mImage = scene.add.image(x, y, isBun ? 'patty-rare' : 'sausage-rare').setDepth(3);
     this.mDragStartX = x;
     this.mDragStartY = y;
     // this.mInStore= false
@@ -231,9 +196,9 @@ export class Patty {
       delay: this.mIsBun ? 6000 : 8000,
       callback: () => {
         this.mState = 1;
-        this.mScene.sound.play("sizzle");
+        this.mScene.sound.play('sizzle');
         this.setDragEvent();
-        this.mImage.setTexture(this.mIsBun ? "patty" : "sausage");
+        this.mImage.setTexture(this.mIsBun ? 'patty' : 'sausage');
         this.burnt();
       },
       paused: false,
@@ -243,8 +208,8 @@ export class Patty {
       delay: 8000,
       callback: () => {
         this.mState = 2;
-        this.mScene.sound.play("sizzle");
-        this.mImage.setTexture(this.mIsBun ? "patty-burnt" : "sausage-burnt");
+        this.mScene.sound.play('sizzle');
+        this.mImage.setTexture(this.mIsBun ? 'patty-burnt' : 'sausage-burnt');
       },
       paused: true,
     });
@@ -252,37 +217,37 @@ export class Patty {
 
   destroy() {
     this.mImage.destroy();
-    this.mScene.input.off("dragStart");
-    this.mScene.input.off("drag");
-    this.mScene.input.off("dragEnd");
+    this.mScene.input.off('dragStart');
+    this.mScene.input.off('drag');
+    this.mScene.input.off('dragEnd');
   }
 
   setDragEvent() {
-    this.mImage.setInteractive({ cursor: "pointer", draggable: true });
+    this.mImage.setInteractive({ cursor: 'pointer', draggable: true });
 
     this.mImage.on(
-      "dragstart",
+      'dragstart',
       (_pointer: any, gameObject: Phaser.GameObjects.Image) => {
         this.mDragStartX = this.mImage.x;
         this.mDragStartY = this.mImage.y;
         this.mScene.children.bringToTop(gameObject);
       },
-      this.mScene,
+      this.mScene
     );
 
     this.mImage.on(
-      "drag",
+      'drag',
       (_pointer: any, dragX: number, dragY: number) => {
         this.mTimer.timeScale = 0;
         this.mImage.setDepth(4);
         this.mImage.x = dragX;
         this.mImage.y = dragY;
       },
-      this.mScene,
+      this.mScene
     );
 
     this.mImage.on(
-      "dragend",
+      'dragend',
       (_pointer: any) => {
         const gameObject = this.mImage;
         const { hasEmpty } = this.mScene.bunStore;
@@ -354,7 +319,12 @@ export class Patty {
           return;
         }
         // 휴지통
-        if (gameObject.x <= 1280 && gameObject.x >= 1100 && gameObject.y >= 584 && gameObject.y <= 720) {
+        if (
+          gameObject.x <= 1280 &&
+          gameObject.x >= 1100 &&
+          gameObject.y >= 584 &&
+          gameObject.y <= 720
+        ) {
           if (this.mInStoreIndex != -1) {
             this.mScene.bunStore.remove(this.mInStoreIndex);
           } else {
@@ -368,7 +338,7 @@ export class Patty {
 
         this.fail();
       },
-      this.mScene,
+      this.mScene
     );
   }
 

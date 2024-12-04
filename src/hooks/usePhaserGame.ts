@@ -11,7 +11,7 @@ export const usePhaserGame = (
 ) => {
   useEffect(() => {
     const app = document.getElementById('phaser-app');
-    app?.replaceChildren();
+    // app?.replaceChildren();
 
     const gameRef = new Game(phaserConfig) as Phaser.Game;
     gameRef.events.on('onLoading', handleOnLoading);
