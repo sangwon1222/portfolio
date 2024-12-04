@@ -1,4 +1,5 @@
 import { GAME_LIST } from '@/constants/game';
+import { getI18n } from '@/locales/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
@@ -60,6 +61,7 @@ export default async function GamePage() {
     })),
   };
 
+  const t = await getI18n();
   return (
     <div className="overflow-hidden flex flex-col items-center gap-3">
       <Script
@@ -87,7 +89,7 @@ export default async function GamePage() {
                 priority={false}
               />
             </div>
-            <p className="w-full text-center">{label}</p>
+            <p className="w-full text-center font-medium">{t(label)}</p>
 
             <Link
               href={href}

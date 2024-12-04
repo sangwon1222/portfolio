@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren } from 'react';
 
 interface PropsType extends PropsWithChildren {
   label: string;
@@ -16,10 +16,12 @@ export const Grid1Ratio2: React.FC<PropsType> = ({ label, period, href, children
           <a href={href} target="_blank" className="w-full text-lg font-bold">
             {label}
           </a>
-          <span className="text-gray-400 w-full">{period}</span>
+          <span className="text-gray-800 dark:text-gray-200 w-full">{period}</span>
         </li>
       </ul>
-      <div className="flex flex-col px-2 gap-2 desktop:col-span-2 tablet:col-span-2">{children}</div>
+      <div className="flex flex-col px-2 gap-2 desktop:col-span-2 tablet:col-span-2">
+        {children}
+      </div>
     </div>
   );
 };

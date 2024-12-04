@@ -1,6 +1,6 @@
 export const NAV_LIST = [
-  { label: 'About', href: '/#about' },
-  { label: 'Experience', href: '/#experience' },
-  { label: 'Game', href: '/game' },
-  { label: 'Blog', href: 'https://velog.io/@hkbvc1222/posts' },
+  { label: 'about', href: '/#about' },
+  { label: 'experience', href: '/#experience' },
+  { label: 'game', href: '/game' },
+  { label: 'blog', href: 'https://velog.io/@hkbvc1222/posts' },
 ] as const;
