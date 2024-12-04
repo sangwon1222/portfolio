@@ -4,12 +4,13 @@ on:
   push:
     branches:
       - main
+      - dev
   workflow_dispatch:
     inputs:
       url:
-        description: "URL to run Lighthouse on"
+        description: 'URL to run Lighthouse on'
         required: false
-        default: "http://localhost:8080"
+        default: 'http://localhost:8080'
 
 permissions:
   issues: write
