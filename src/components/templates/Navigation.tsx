@@ -10,11 +10,14 @@ import { memo } from 'react';
 import { NAV_LIST } from '@/constants/nav';
 import { GitBtn } from '@molecules/GitBtn';
 import { LocaleBtn } from '@molecules/LocaleBtn';
+import { useI18n } from '@/locales/client';
 
 const Navigation: React.FC = memo(() => {
   const router = useRouter();
   const { theme } = useTheme();
   const { open, setListMobile } = useListMobile();
+
+  const t = useI18n();
 
   const goPage = (pageName: string) => {
     setListMobile(false);
@@ -53,7 +56,7 @@ const Navigation: React.FC = memo(() => {
                   aria-label={`${label}-button`}
                   className="px-2 center-layout h-full hover:animate-wiggle dark:hover:text-red-400 hover:text-red-600"
                 >
-                  {label}
+                  {t(label)}
                 </Link>
               ))}
             </div>
