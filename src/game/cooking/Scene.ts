@@ -7,6 +7,7 @@ import * as Phaser from 'phaser';
 import Buns from './Buns';
 import gsap from 'gsap';
 import { COOKING_RESOURCE_LIST } from '@/constants/cooking';
+import { CANVAS_HEIGHT, CANVAS_WIDTH, CENTER_X, CENTER_Y } from '@/constants/canvas';
 
 export default class MainScene extends Phaser.Scene {
   private mBunStore!: BunStore;
@@ -60,51 +61,83 @@ export default class MainScene extends Phaser.Scene {
   }
 
   async create() {
-    this.add.image(1280 / 2, 720 / 2, 'bg');
+    this.add.image(CENTER_X, CENTER_Y, 'bg');
 
-    const mute = this.add.image(1280 - 150 / 2, 150 / 2, 'unmute').setScale(0.5, 0.5);
+    // 음소거 아이콘 생성
+    const mute = this.add.image(1200, 80, 'unmute').setScale(0.5, 0.5);
     mute.setInteractive({ cursor: 'pointer' });
     mute.on('pointerdown', () => {
       mute.setTexture(this.sound.mute ? 'unmute' : 'mute');
       this.sound.mute = !this.sound.mute;
     });
 
+    // 쓰레기통 생성
     this.add.image(1210, 640, 'trash-cans');
 
+    // 번 접시 컨테이너 생성
     this.mBunsTray = new BunsTray(this, 504, 520, 1, true);
     await this.mBunsTray.init();
 
+    // 번 충전 버튼
+    const bunCharge = new Buns(this, 516, 640, 'buns');
+
+    // 핫도그 접시 컨테이너 생성
     this.mHotDogBunsTray = new BunsTray(this, 624, 520, 1, false);
     await this.mHotDogBunsTray.init();
 
-    new Buns(this, 516, 640, 'buns');
-    new Buns(this, 516 + 120, 640, 'hotdog-buns');
+    // 핫도그 번 충전 버튼
+    const hotdogCharge = new Buns(this, 516 + 120, 640, 'hotdog-buns');
 
+    // 번 팬 생성
     this.mPanList = new PanContainer(this, 984, 520, 1, true);
     await this.mPanList.init();
 
+    // 핫도그 그릴 생성
     this.mGrilleList = new PanContainer(this, 984 + 120, 520, 1, false);
     await this.mGrilleList.init();
 
+    // 보관함 생성
     this.mBunStore = new BunStore(this, 984 + 120 + 120, 280);
 
+    // 음료 디스펜서 생성
     this.mDispenserManager = new DispenserManager(this);
 
+    // 고객 매니저 생성
     this.mCustomer = new CustomerManager(this);
 
-    const graphic = this.add.graphics().setDepth(9).setName('dimmed');
-    graphic.fillStyle(0x000000, 0.6);
-    graphic.fillRect(0, 0, 1280, 720);
-    graphic.setActive(true);
-    const playBtn = this.add.sprite(1280 / 2, 720 / 2, 'playBtn').setDepth(10);
+    const dimmed = this.add.graphics().setDepth(9).setName('dimmed');
+    dimmed.fillStyle(0x000000, 0.6);
+    dimmed.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    dimmed.setActive(true);
+    const playBtn = this.add.sprite(CENTER_X, CENTER_Y, 'playBtn').setDepth(10);
+
+    const burnTouchIcon = this.add
+      .sprite(bunCharge.x, bunCharge.y, 'touch-guide')
+      .setScale(0.5, 0.5)
+      .setDepth(1);
+
+    const hotdogTouchIcon = this.add
+      .sprite(hotdogCharge.x, hotdogCharge.y, 'touch-guide')
+      .setScale(0.5, 0.5)
+      .setDepth(1);
+
+    gsap
+      .to(burnTouchIcon, { y: burnTouchIcon.y - 10, duration: 0.5, repeat: -1, ease: 'none' })
+      .yoyo(true);
+    gsap
+      .to(hotdogTouchIcon, { y: hotdogTouchIcon.y - 10, duration: 0.5, repeat: -1, ease: 'none' })
+      .yoyo(true);
 
     this.input.setDefaultCursor('pointer');
 
     this.input.on('pointerdown', () => {
+      gsap.globalTimeline.clear();
       this.input.off('pointerdown');
       this.input.setDefaultCursor('');
-      graphic.destroy();
+      dimmed.destroy();
       playBtn.destroy();
+      burnTouchIcon.destroy();
+      hotdogTouchIcon.destroy();
       this.sound.play('bgm', { loop: true, volume: 1 });
       this.mDispenserManager.init();
       this.mCustomer.init();
@@ -173,7 +206,6 @@ export class Patty {
   //2 => 'burnt'
   private mDragStartX!: number;
   private mDragStartY!: number;
-  // private mInStore: Boolean
   private mInStoreIndex: number;
   set inStoreIndex(v: number) {
     this.mInStoreIndex = v;
@@ -186,7 +218,6 @@ export class Patty {
     this.mImage = scene.add.image(x, y, isBun ? 'patty-rare' : 'sausage-rare').setDepth(3);
     this.mDragStartX = x;
     this.mDragStartY = y;
-    // this.mInStore= false
     this.mInStoreIndex = -1;
   }
 

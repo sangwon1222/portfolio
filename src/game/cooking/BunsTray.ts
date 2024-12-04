@@ -21,6 +21,13 @@ export default class BunsTray {
     return this.mTray.image;
   }
 
+  get x(): number {
+    return this.mPosition.x;
+  }
+  get y(): number {
+    return this.mPosition.y;
+  }
+
   constructor(scene: MainScene, x: number, y: number, activeCount: number, isBun: boolean) {
     this.mScene = scene;
     this.mTrayList = [];
