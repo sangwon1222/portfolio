@@ -3,7 +3,10 @@ import { PropsWithChildren, useCallback, useEffect, useMemo, useState } from 're
 import ThemeContext from './themeContext';
 
 const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const [theme, setTheme] = useState<ThemeType>('light');
+  const init = (localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light') as
+    | 'light'
+    | 'dark';
+  const [theme, setTheme] = useState<ThemeType>(init);
   const toggleTheme = useCallback(
     () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light')),
     []
