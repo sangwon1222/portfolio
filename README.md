@@ -2,7 +2,7 @@
 
 <br />
 <p align="center">
-  <a href="https://github.com/sangwon1222/portfolio">
+  <a href="https://lsw.kr">
     <img src="https://lsw.kr/assets/icon-96x96.png" alt="Logo" width="96" height="96">
   </a>
 
