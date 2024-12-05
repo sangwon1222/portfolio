@@ -25,7 +25,7 @@ export const metadata = {
     siteName: '이상원 포트폴리오',
     images: [
       {
-        url: 'https://www.lsw.kr/assets/thumbnail/home.png',
+        url: 'https://www.lsw.kr/assets/thumbnails/home.webp',
         width: 1200,
         height: 630,
         alt: '프론트엔드 이상원 포트폴리오 이미지',

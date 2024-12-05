@@ -34,7 +34,7 @@ export const metadata = {
     siteName: '이상원 포트폴리오',
     images: [
       {
-        url: 'https://www.lsw.kr/assets/thumbnail/game.png',
+        url: 'https://www.lsw.kr/assets/thumbnails/game.webp',
         width: 1200,
         height: 630,
         alt: '게임 프로젝트 - 이상원 포트폴리오',
