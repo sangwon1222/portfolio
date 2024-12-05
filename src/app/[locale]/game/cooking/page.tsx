@@ -16,7 +16,7 @@ export async function generateMetadata(
       publishedTime: '2023-01-01T00:00:00.000Z',
       images: [
         {
-          url: 'https://www.lsw.kr/assets/images/thumbnails/cooking.jpg',
+          url: 'https://www.lsw.kr/assets/thumbnails/cooking.jpg',
           width: 1280,
           height: 720,
           alt: '쿠킹 게임 썸네일',
@@ -27,7 +27,6 @@ export async function generateMetadata(
 }
 
 const CookingGame = dynamic(() => import('@/components/templates/Cooking'), {
-  ssr: false,
   loading: () => <Loading />,
 });
 export default async function CookingLayout() {

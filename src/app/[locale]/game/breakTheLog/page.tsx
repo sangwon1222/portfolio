@@ -17,7 +17,7 @@ export async function generateMetadata(
       publishedTime: '2023-01-01T00:00:00.000Z',
       images: [
         {
-          url: 'https://www.lsw.kr/assets/images/thumbnails/breakTheLog.jpg',
+          url: 'https://www.lsw.kr/assets/thumbnails/breakTheLog.jpg',
           width: 1280,
           height: 720,
           alt: '나무패기 게임 썸네일',
@@ -28,7 +28,6 @@ export async function generateMetadata(
 }
 
 const BreakTheLogGame = dynamic(() => import('@/components/templates/BreakTheLog'), {
-  ssr: false,
   loading: () => <Loading />,
 });
 export default async function BreakTheLogLayout() {
