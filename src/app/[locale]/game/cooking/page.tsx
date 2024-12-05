@@ -18,7 +18,7 @@ export async function generateMetadata(
         {
           url: 'https://www.lsw.kr/assets/thumbnails/cooking.jpg',
           width: 1280,
-          height: 720,
+          height: 630,
           alt: '쿠킹 게임 썸네일',
         },
       ],

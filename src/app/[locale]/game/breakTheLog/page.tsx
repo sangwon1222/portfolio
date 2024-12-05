@@ -19,7 +19,7 @@ export async function generateMetadata(
         {
           url: 'https://www.lsw.kr/assets/thumbnails/breakTheLog.jpg',
           width: 1280,
-          height: 720,
+          height: 630,
           alt: '나무패기 게임 썸네일',
         },
       ],
