@@ -38,4 +38,23 @@ export default {
   babyAllDescription: 'Baby-All Developing educational content',
   haruHangul: 'Haru-Hangul',
   haruHangulDescription: 'Haru-Hangul Developing educational content',
+
+  parentPage: 'Parent Page',
+
+  picturePuzzle: 'Picture Puzzle',
+  rhythmPuzzle: 'Rhythm Puzzle',
+  colorPuzzle: 'Color Puzzle',
+  partnerPuzzle: 'Partner Puzzle',
+  myHangul: 'My Hangul',
+  nodakPuzzle: 'Nodak Puzzle',
+
+  alphabetCatch: 'Alphabet Catch',
+  alphabetMatch: 'Alphabet Match',
+  alphabetTouch: 'Alphabet Touch',
+  alphabetBlock: 'Alphabet Block',
+  storyQuiz: 'Story Quiz',
+  readingMatch: 'Reading Match',
+  listeningTouch: 'Listening Touch',
+  storyCatch: 'Story Catch',
+  spotFinder: 'Spot Finder',
 } as const;
