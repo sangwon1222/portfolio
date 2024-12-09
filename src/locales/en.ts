@@ -33,4 +33,9 @@ export default {
   breakTheLog: 'Break The Log',
   cooking: 'Cooking',
   cardAction: 'Card Action',
+
+  aramBookClub: 'Aram Book Club',
+  babyAllDescription: 'Baby-All Developing educational content',
+  haruHangul: 'Haru-Hangul',
+  haruHangulDescription: 'Haru-Hangul Developing educational content',
 } as const;

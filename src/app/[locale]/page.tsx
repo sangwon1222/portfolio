@@ -1,8 +1,9 @@
 import Loading from '@/components/Loading';
+import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: '프론트엔드 이상원 | 포트폴리오',
   description:
     '프론트엔드 개발자 이상원의 포트폴리오. React, Next.js, TypeScript 등을 활용한 UI/UX 경험을 소개합니다.',
