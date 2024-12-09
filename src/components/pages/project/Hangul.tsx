@@ -24,7 +24,7 @@ export default function Hangul() {
         <ul className="grid grid-cols-1 gap-10">
           {HANGUL_PROJECT.map(({ label, src }, i) => (
             <li key={`${label}-${i}`} className="flex flex-col gap-2">
-              <p>{label}</p>
+              <h4>{t(label)}</h4>
               <video
                 className="desktop:w-[640px] tablet:w-[640px] w-[320px] h-auto aspect-video"
                 controls
@@ -38,7 +38,7 @@ export default function Hangul() {
         </ul>
 
         <div className="flex flex-col items-center gap-4 p-1 w-full">
-          <h4>학부모 페이지 </h4>
+          <h4>{t('parentPage')}</h4>
           <Image
             src="/assets/aram/hangul/parents.png"
             className="desktop:w-[640px] tablet:w-[640px] w-[320px] h-auto aspect-video"

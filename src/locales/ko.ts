@@ -38,4 +38,22 @@ export default {
   babyAllDescription: '베이비올 교육 콘텐츠 개발',
   haruHangul: '하루한글',
   haruHangulDescription: '하루한글 교육 콘텐츠 개발',
+  parentPage: '학부모 페이지',
+
+  picturePuzzle: '그림 퍼즐',
+  rhythmPuzzle: '리듬 한글',
+  colorPuzzle: '색칠 한글',
+  partnerPuzzle: '짝꿍 한글',
+  myHangul: '나의 한글',
+  nodakPuzzle: '노닥 한글',
+
+  alphabetCatch: '알파벳 캐치',
+  alphabetMatch: '알파벳 매치',
+  alphabetTouch: '알파벳 터치',
+  alphabetBlock: '알파벳 블록',
+  storyQuiz: '스토리 퀴즈',
+  readingMatch: '리딩 매치',
+  listeningTouch: '리스닝 터치',
+  storyCatch: '스토리 캐치',
+  spotFinder: '스팟 파인더',
 } as const;
