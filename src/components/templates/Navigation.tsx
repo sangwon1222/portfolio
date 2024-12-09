@@ -78,9 +78,9 @@ const Navigation: React.FC = memo(() => {
               onClick={() => goPage(href)}
               key={`${label}-button-${i}`}
               className="py-5 px-7 text-start"
-              aria-label={`go ${label} page`}
+              aria-label={`mobile-${label}-button`}
             >
-              {label}
+              {t(label)}
             </button>
           ))}
         </div>
