@@ -2,8 +2,8 @@ import BabyAll from '@/components/pages/project/BabyAll';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '아람 베이비올 | 프론트엔드 이상원',
-  description: '아람의 베이비올 프로젝트입니다.',
+  title: '아람 베이비올 | 이상원',
+  description: '아람 베이비올 프로젝트 입니다.',
   keywords: [
     'lee sang won',
     'lsw',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     '웹 개발',
   ],
   openGraph: {
-    title: '아람 베이비올 | 프론트엔드 이상원',
+    title: '아람 베이비올 | 이상원',
     description: '아람 베이비올 프로젝트 입니다.',
     url: 'https://www.lsw.kr/ko/project/babyall/',
     siteName: '이상원 포트폴리오',

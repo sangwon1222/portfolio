@@ -2,8 +2,8 @@ import Hangul from '@/components/pages/project/Hangul';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '아람 하루한글 | 프론트엔드 이상원',
-  description: '아람의 하루한글 프로젝트입니다.',
+  title: '아람 하루한글 | 이상원',
+  description: '아람 하루한글 프로젝트 입니다.',
   keywords: [
     'lee sang won',
     'lsw',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     '웹 개발',
   ],
   openGraph: {
-    title: '프론트엔드 이상원 | 포트폴리오',
+    title: '아람 하루한글 | 이상원',
     description: '아람 하루한글 프로젝트 입니다.',
     url: 'https://www.lsw.kr/ko/project/hangul/',
     siteName: '이상원 포트폴리오',

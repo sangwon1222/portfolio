@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: '게임 | 이상원 포트폴리오',
     description:
       '프론트엔드 개발자 이상원의 게임 프로젝트를 만나보세요. React, Phaser,Websocket.io, TypeScript로 제작된 흥미로운 인터랙티브 게임들.',
-    url: 'https://lsw.kr',
+    url: 'https://lsw.kr/game',
     siteName: '이상원 포트폴리오',
     images: [
       {

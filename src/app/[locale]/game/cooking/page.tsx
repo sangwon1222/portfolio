@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '게임 | 이상원 포트폴리오',
     description: 'Phaser를 활용한 요리 게임',
-    url: 'https://www.lsw.kr/ko/game/cooking/',
+    url: 'https://www.lsw.kr/game/cooking/',
     siteName: '이상원 포트폴리오 - 쿠킹게임',
     images: [
       {
