@@ -1,10 +1,11 @@
 import { GAME_LIST } from '@/constants/game';
 import { getI18n } from '@/locales/server';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: '게임 | 이상원 포트폴리오',
   description:
     '프론트엔드 개발자 이상원의 게임 프로젝트 페이지. React, Next.js, TypeScript로 제작된 인터랙티브 게임과 관련 기술을 소개합니다.',
@@ -23,7 +24,6 @@ export const metadata = {
     '이상원',
     '프론트엔드 개발자',
   ],
-  author: 'lsw',
   viewport: 'width=device-width, initial-scale=1.0',
   robots: 'index, follow',
   openGraph: {
