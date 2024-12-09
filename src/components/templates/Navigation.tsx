@@ -31,7 +31,7 @@ const Navigation: React.FC = memo(() => {
   return (
     <div className="sticky top-0 z-20 min-w-[320px] w-full shadow-lg backdrop-blur-3xl h-20">
       <div className="flex flex-col justify-start w-full max-w-[1280px] m-auto font-bold">
-        <div className="flex justify-between items-center w-full px-4">
+        <div className="flex justify-between items-center w-full px-1 desktop:px-4 tablet:px-4">
           <ListBtn />
 
           <Link href="/">

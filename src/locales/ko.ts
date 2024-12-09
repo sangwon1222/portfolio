@@ -33,4 +33,9 @@ export default {
   breakTheLog: '나무 패기',
   cooking: '쿠킹',
   cardAction: '카드 액션',
+
+  aramBookClub: '아람 북클럽',
+  babyAllDescription: '베이비올 교육 콘텐츠 개발',
+  haruHangul: '하루한글',
+  haruHangulDescription: '하루한글 교육 콘텐츠 개발',
 } as const;

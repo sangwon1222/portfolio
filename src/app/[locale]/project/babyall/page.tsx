@@ -1,55 +1,37 @@
-'use client';
+import BabyAll from '@/components/pages/project/BabyAll';
+import { Metadata } from 'next';
 
-import { BABY_ALL_PROJECT } from '@/constants/project';
-import Image from 'next/image';
-
-export default function babyAll() {
-  return (
-    <>
-      <div className="flex flex-col items-center gap-10 p-10 w-full">
-        <div className="flex flex-col items-center gap-2">
-          <h3>
-            <a href="https://arambookclub.com/smart/book/MA029000">아람북클럽: Baby All</a>
-          </h3>
-          <p className="font-bold"> 베이비올 교육 콘텐츠 개발 (typescript, vue2, pixijs )</p>
-        </div>
-
-        <ul className="grid grid-cols-1 gap-10">
-          {BABY_ALL_PROJECT.map(({ label, src }, i) => (
-            <li key={`${label}-${i}`} className="flex flex-col gap-2">
-              <p>{label}</p>
-              <video
-                className="desktop:w-[640px] tablet:w-[640px] w-[320px] h-auto aspect-video"
-                controls
-                preload={i > 3 ? 'none' : 'metadata'}
-                muted
-              >
-                <source src={`/assets/aram/babyall/${src}.mp4`} type="video/mp4" />
-              </video>
-            </li>
-          ))}
-        </ul>
-
-        <div className="flex flex-col items-center gap-4 p-1 w-full">
-          <h4>학부모 페이지 </h4>
-          <Image
-            src="/assets/aram/babyall/parents-1.png"
-            className="desktop:w-[640px] tablet:w-[640px] w-[320px] h-auto aspect-video"
-            alt="학부모페이지-1"
-            width={640}
-            height={320}
-            priority={false}
-          />
-          <Image
-            src="/assets/aram/babyall/parents-2.png"
-            className="desktop:w-[640px] tablet:w-[640px] w-[320px] h-auto aspect-video"
-            alt="학부모페이지-2"
-            width={640}
-            height={320}
-            priority={false}
-          />
-        </div>
-      </div>
-    </>
-  );
+export const metadata: Metadata = {
+  title: '아람 베이비올 | 이상원',
+  description: '아람 베이비올 프로젝트 입니다.',
+  keywords: [
+    'lee sang won',
+    'lsw',
+    '프론트엔드 개발자',
+    '이상원 포트폴리오',
+    'React',
+    'Next.js',
+    'TypeScript',
+    'UI/UX',
+    '웹 개발',
+  ],
+  openGraph: {
+    title: '아람 베이비올 | 이상원',
+    description: '아람 베이비올 프로젝트 입니다.',
+    url: 'https://www.lsw.kr/ko/project/babyall/',
+    siteName: '이상원 포트폴리오',
+    images: [
+      {
+        url: 'https://www.lsw.kr/assets/thumbnails/baby-all.jpg',
+        width: 1200,
+        height: 630,
+        alt: '아람 베이비올 이미지',
+      },
+    ],
+    locale: 'ko_KR',
+    type: 'website',
+  },
+};
+export default function babyAllPage() {
+  return <BabyAll />;
 }
