@@ -6,6 +6,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from 'react-hot-toast';
 import { Provider } from '@app/providers/provider';
 import ClientLayout from '@/components/pages/ClientLayout';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'LSW',
@@ -28,6 +29,16 @@ export default async function RootLayout({
   return (
     <html suppressHydrationWarning lang={locale}>
       <body className="min-w-[320px]">
+        {/* <!-- Google tag (gtag.js) --> */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-KRPLHM3RN1"></Script>
+        <Script>
+          {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KRPLHM3RN1');`}
+        </Script>
+
         <Analytics />
         <SpeedInsights />
         <Toaster />
