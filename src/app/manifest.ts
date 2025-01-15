@@ -33,5 +33,10 @@ export default function manifest(): MetadataRoute.Manifest {
         type: 'image/png',
       },
     ],
+    id: 'https://lsw.kr/',
+    dir: 'ltr',
+    lang: 'ko',
+    orientation: 'natural',
+    display_override: ['window-controls-overlay'],
   };
 }
