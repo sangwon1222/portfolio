@@ -22,7 +22,7 @@
 ## Done
 
 - 국제화 `next-international`
-- 성능 최적화 `@vercel/speed-insight`,`@vercel/analytics`, `lighthouse`
+- 성능 최적화 `@vercel/speed-insight`,`@vercel/analytics`, `lighthouse` `web-vitals`
 - PWA 웹앱 다운로드
 - 다크모드 지원
 
