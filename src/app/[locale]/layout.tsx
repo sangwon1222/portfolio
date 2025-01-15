@@ -7,6 +7,7 @@ import { Toaster } from 'react-hot-toast';
 import { Provider } from '@app/providers/provider';
 import ClientLayout from '@/components/pages/ClientLayout';
 import Script from 'next/script';
+import ServiceWorkerRegister from '@/components/ServiceWorker';
 
 export const metadata: Metadata = {
   title: 'LSW',
@@ -39,6 +40,7 @@ export default async function RootLayout({
   gtag('config', 'G-KRPLHM3RN1');`}
         </Script>
 
+        <ServiceWorkerRegister />
         <Analytics />
         <SpeedInsights />
         <Toaster />
