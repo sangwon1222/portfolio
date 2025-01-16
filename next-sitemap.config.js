@@ -8,6 +8,7 @@ module.exports = {
   i18n: {
     locales: ['en', 'ko'], // 지원하는 언어
     defaultLocale: 'ko', // 기본 언어
+    localeDetection: false,
   },
   additionalPaths: async (config) => {
     // 동적 경로 수동 추가
