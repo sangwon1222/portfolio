@@ -31,6 +31,13 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     type: 'website',
   },
+  alternates: {
+    canonical: 'https://lsw.kr/hangul',
+    languages: {
+      en: 'https://lsw.kr/en/hangul',
+      ko: 'https://lsw.kr/ko/hangul',
+    },
+  },
 };
 export default function hangulPage() {
   return <Hangul />;
