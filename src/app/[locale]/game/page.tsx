@@ -14,13 +14,15 @@ export const metadata: Metadata = {
     'lsw',
     '게임 개발',
     '프론트엔드 게임',
+    '웹 게임',
+    '게임',
     'React 게임',
     'pixi 게임',
     'pixi.js 게임',
     'phaser 게임',
     'phaser.js 게임',
     'webGL',
-    'TypeScript 게임',
+    'TypeScript',
     '이상원',
     '프론트엔드 개발자',
   ],
@@ -45,6 +47,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://lsw.kr/game',
+    languages: {
+      en: 'https://lsw.kr/en/game',
+      ko: 'https://lsw.kr/ko/game',
+    },
   },
 };
 
@@ -53,6 +59,13 @@ export default async function GamePage() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: '게임 리스트',
+    mainEntity: {
+      '@type': 'WebPage',
+      name: '게임 | 이상원 포트폴리오',
+      url: 'https://lsw.kr/game',
+      description:
+        '프론트엔드 개발자 이상원의 게임 프로젝트 페이지. React, Next.js, TypeScript로 제작된 인터랙티브 게임과 관련 기술을 소개합니다.',
+    },
     itemListElement: GAME_LIST.map(({ label, href }, index) => ({
       '@type': 'ListItem',
       position: index + 1,
@@ -72,13 +85,13 @@ export default async function GamePage() {
 
       <ul
         className="grid grid-cols-1 desktop:grid-cols-3 tablet:grid-cols-2 gap-9 py-10"
-        aria-label="game list"
+        aria-label="게임 목록"
       >
         {GAME_LIST.map(({ src, alt, label, href }, i) => (
           <li
             className="overflow-hidden center-layout flex-col gap-3 p-5 w-full bg-gray-100 dark:bg-gray-700 rounded-xl"
             key={`${label}-${i}`}
-            aria-label={`${label} game button`}
+            aria-labelledby={`game-item-${i}`}
           >
             <div className="relative w-[250px] h-[250px]">
               <Image

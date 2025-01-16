@@ -10,13 +10,15 @@ export const metadata: Metadata = {
     'lsw',
     '게임 개발',
     '프론트엔드 게임',
+    '웹 게임',
+    '게임',
     'React 게임',
     'pixi 게임',
     'pixi.js 게임',
     'phaser 게임',
     'phaser.js 게임',
     'webGL',
-    'TypeScript 게임',
+    'TypeScript',
     '이상원',
     '프론트엔드 개발자',
   ],
@@ -39,7 +41,11 @@ export const metadata: Metadata = {
     type: 'website',
   },
   alternates: {
-    canonical: 'https://lsw.kr/game',
+    canonical: 'https://lsw.kr/game/breakTheLog',
+    languages: {
+      en: 'https://lsw.kr/en/game/breakTheLog',
+      ko: 'https://lsw.kr/ko/game/breakTheLog',
+    },
   },
 };
 

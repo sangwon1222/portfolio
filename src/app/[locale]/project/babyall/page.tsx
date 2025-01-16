@@ -31,6 +31,13 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     type: 'website',
   },
+  alternates: {
+    canonical: 'https://lsw.kr/babyall',
+    languages: {
+      en: 'https://lsw.kr/en/babyall',
+      ko: 'https://lsw.kr/ko/babyall',
+    },
+  },
 };
 export default function babyAllPage() {
   return <BabyAll />;
