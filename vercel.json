@@ -39,5 +39,5 @@
       ]
     }
   ],
-  "ignoredBuildStep": "echo \"$VERCEL_GIT_BRANCH\" | grep -qE '^(main|dev)$'"
+  "ignoreCommand": "echo \"$VERCEL_GIT_BRANCH\" | grep -qE '^(main|dev)$'"
 }
