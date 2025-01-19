@@ -38,6 +38,5 @@
         { "key": "Cross-Origin", "value": "use-credentials" }
       ]
     }
-  ],
-  "ignoreCommand": "echo \"$VERCEL_GIT_BRANCH\" | grep -qE '^(main|dev)$'"
+  ]
 }
