@@ -38,5 +38,6 @@
         { "key": "Cross-Origin", "value": "use-credentials" }
       ]
     }
-  ]
+  ],
+  "ignoredBuildStep": "echo \"$VERCEL_GIT_BRANCH\" | grep -qE '^(main|dev)$'"
 }
