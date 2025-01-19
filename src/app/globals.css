@@ -40,16 +40,6 @@
   @apply bg-white text-gray-800;
 }
 
-@media (orientation: portrait) {
-  body {
-    transform: rotate(90deg);
-    transform-origin: center;
-    width: 100vh;
-    height: 100vw;
-    overflow: hidden;
-  }
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

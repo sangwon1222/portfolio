@@ -1,6 +1,7 @@
 import Loading from '@/components/Loading';
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 
 export const metadata: Metadata = {
   title: '쿠킹 게임 | 이상원 포트폴리오',
@@ -53,5 +54,15 @@ const CookingGame = dynamic(() => import('@/components/templates/Cooking'), {
   loading: () => <Loading />,
 });
 export default async function CookingLayout() {
-  return <CookingGame />;
+  return (
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="initial-scale=1.0, width=device-width, user-scalable=no, orientation=landscape"
+        />
+      </Head>
+      <CookingGame />;
+    </>
+  );
 }
