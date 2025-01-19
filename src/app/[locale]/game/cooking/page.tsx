@@ -23,7 +23,6 @@ export const metadata: Metadata = {
     '이상원',
     '프론트엔드 개발자',
   ],
-  viewport: 'initial-scale=1.0, width=device-width, user-scalable=no, orientation=landscape',
   robots: 'index, follow',
   openGraph: {
     title: '게임 | 이상원 포트폴리오',
